@@ -1,36 +1,18 @@
 ---
-title: "Blog Post 4"
+title: "3D modeling + printing"
 date: 2021-12-18T11:10:36+08:00
 draft: false
 language: en
 featured_image: ../assets/images/featured/featured-img-placeholder.png
-summary: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus, odio nec venenatis lacinia, lacus lectus varius nisi, in tristique mi purus ut libero.
-description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus, odio nec venenatis lacinia, lacus lectus varius nisi, in tristique mi purus ut libero. Vestibulum vel convallis felis. Ut finibus lorem vestibulum lobortis rhoncus.
-author: TailBliss
-authorimage: ../assets/images/global/author.webp
-categories: blog
-tags: blog
----
-__Advertisement :smile:__
-
-- __[pica](https://nodeca.github.io/pica/demo/)__ - high quality and fast image
-  resize in browser.
-- __[babelfish](https://github.com/nodeca/babelfish/)__ - developer friendly
-  i18n with plurals support and easy syntax.
-
-You will like those projects!
-
+summary: Using SolidWorks we were making some easy and fairly advanced 3D models. And also we had to desing some contraption and 3D print it.
+description: Using SolidWorks we were making some easy and fairly advanced 3D models. And also we had to desing some contraption and 3D print it.
+author: Jan Hrnek
+authorimage: /images/jan.jpg
+categories: Blog
+tags: ["Mini-project"]
 ---
 
-# h1 Heading :blush:
-## h2 Heading
-### h3 Heading
-#### h4 Heading
-##### h5 Heading
-###### h6 Heading
-
-
-## Horizontal Rules
+# Intro
 
 ***
 
@@ -38,220 +20,105 @@ You will like those projects!
 
 ___
 
+In this mini-project we were introduced do 3D scanning and modeling. In reality most of us have already known how to make CAD models, assemblies and what is 3D scanning. However there were some students that were new to this field.
+This mini-project was devied into 4 task, in which we tested our knowledge and experinece in SolidWorks. Me as a holder of 2 certificates (CSWA, CSWP), were these tasks not as hard as for others.
+After I made all of the models and assembly, I save them as .STEP files and imported them into Fusion to make the interactive models on this web.
 
-## Typographic replacements
+# Piston-rod
 
-Enable typographer option to see result.
+***
 
-(c) (C) (r) (R) (tm) (TM) (p) (P) +-
+---
 
-test.. test... test..... test?..... test!....
+___
 
-!!!!!! ???? ,,  -- ---
+The first task was to make a piston-rod. This one was the easiest of them all, beceause it covered the basic features in SolidWorks. It showed how to make sktech, what is extrude etc. Overall very simple model.
 
-"Smartypants, double quotes" and 'single quotes'
 
+<iframe src="https://gmail4009016.autodesk360.com/g/shares/SH90d2dQT28d5b602811bff51a55c006b651"
+        width="70%"
+        height="450"
+        style="border:none; display:block; margin:0 auto;"
+        allowfullscreen></iframe>
+        
+# Shaft
 
-## Emphasis
+***
 
-**This is bold text**
+---
 
-__This is bold text__
+___
 
-*This is italic text*
+Here the main core of the task wasn't the model itself but the drawing. Also very simple task, that requires not only how SolidWorks works, but also norms and rules how to make a technical drawing.
 
-_This is italic text_
+<iframe src="https://gmail4009016.autodesk360.com/g/shares/SH90d2dQT28d5b6028119e74a19932b0d7db"
+        width="70%"
+        height="450"
+        style="border:none; display:block; margin:0 auto;"
+        allowfullscreen></iframe>
 
-~~Strikethrough~~
+## Drawing
 
+As said before to make this drawing we needed to know how to correctly make a drawing. It is a fairly easy drawing most of us already leant in high school. However there are some things that you need technical knowledge about *(for example: Geometrical Tolerances, Tolerances, etc.)*
 
-## Blockquotes
+What is in the drawing:
+  - Dimensions
+  - Tolerances
+  - Geometrical Tolerances
+  - Bases
+  - Section views
+  - Surface Roughness
+  - Additional Notes
 
+<p align="center">
+  <img src="/images/hridel.jpg" alt="Tripod scheme" class="rounded-2xl shadow-lg" width="700">
+</p>
 
-> Blockquotes can also be nested...
->> ...by using additional greater-than signs right next to each other...
-> > > ...or with spaces between arrows.
+# Cardan assembly
 
+***
 
-## Lists
+---
 
-Unordered
+___
 
-+ Create a list by starting a line with `+`, `-`, or `*`
-+ Sub-lists are made by indenting 2 spaces:
-  - Marker character change forces new list start:
-    * Ac tristique libero volutpat at
-    + Facilisis in pretium nisl aliquet
-    - Nulla volutpat aliquam velit
-+ Very easy!
+In this task, we were given an assembly to put together. Basicly it's a lever that is connected to a joint. Specificaly the lever is conected to a cardan, which then rotates with the shaft with the rigid sides.
 
-Ordered
+<iframe src="https://gmail4009016.autodesk360.com/g/shares/SH90d2dQT28d5b60281139134bc891ec561c"
+        width="70%"
+        height="450"
+        style="border:none; display:block; margin:0 auto;"
+        allowfullscreen></iframe>
 
-1. Lorem ipsum dolor sit amet
-2. Consectetur adipiscing elit
-3. Integer molestie lorem at massa
+        
+# Holder
 
+***
 
-1. You can use sequential numbers...
-1. ...or keep all the numbers as `1.`
+---
 
-Start numbering with offset:
+___
 
-57. foo
-1. bar
+After we completed the easier tasks, the more experienced ones moved to these 2 tasks. These were quite harder then the others, but in the end it was all about a little thinking and trying. For both the holder and the cover were provided technical drawings. Howerver they were made so you have to think about the right approach. Even though the holder was harder it used many basic features.
 
+<iframe src="https://gmail4009016.autodesk360.com/g/shares/SH90d2dQT28d5b602811fa014bf6a1e8d557"
+        width="70%"
+        height="450"
+        style="border:none; display:block; margin:0 auto;"
+        allowfullscreen></iframe>
+        
+# Cover
 
-## Code
+***
 
-Inline `code`
+---
 
-Indented code
+___
 
-    // Some comments
-    line 1 of code
-    line 2 of code
-    line 3 of code
+On the other hand, the cover was indeed hard. It definetley took me longer then I expected. Here we had to use our 3D imagination to another level, bcs the drawing which was provided was as little dimensioned as it could. The biggest role had the base sketch, which needed to be designed as good as possible in order to bypass potential problems in the model.
 
-
-Block code "fences"
-
-```
-Sample text here...
-```
-
-Syntax highlighting
-
-``` js
-var foo = function (bar) {
-  return bar++;
-};
-
-console.log(foo(5));
-```
-
-## Tables
-
-| Option | Description |
-| ------ | ----------- |
-| data   | path to data files to supply the data that will be passed into templates. |
-| engine | engine to be used for processing templates. Handlebars is the default. |
-| ext    | extension to be used for dest files. |
-
-Right aligned columns
-
-| Option | Description |
-| ------:| -----------:|
-| data   | path to data files to supply the data that will be passed into templates. |
-| engine | engine to be used for processing templates. Handlebars is the default. |
-| ext    | extension to be used for dest files. |
-
-
-## Links
-
-[link text](http://dev.nodeca.com)
-
-[link with title](http://nodeca.github.io/pica/demo/ "title text!")
-
-Autoconverted link https://github.com/nodeca/pica (enable linkify to see)
-
-
-## Images
-
-![Minion](https://octodex.github.com/images/minion.png)
-![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
-
-Like links, Images also have a footnote style syntax
-
-![Alt text][id]
-
-With a reference later in the document defining the URL location:
-
-[id]: https://octodex.github.com/images/dojocat.jpg  "The Dojocat"
-
-
-## Plugins
-
-The killer feature of `markdown-it` is very effective support of
-[syntax plugins](https://www.npmjs.org/browse/keyword/markdown-it-plugin).
-
-
-### [Emojies](https://github.com/markdown-it/markdown-it-emoji)
-
-> Classic markup: :wink: :crush: :cry: :tear: :laughing: :yum:
->
-> Shortcuts (emoticons): :-) :-( 8-) ;)
-
-see [how to change output](https://github.com/markdown-it/markdown-it-emoji#change-output) with twemoji.
-
-
-### [Subscript](https://github.com/markdown-it/markdown-it-sub) / [Superscript](https://github.com/markdown-it/markdown-it-sup)
-
-- 19^th^
-- H~2~O
-
-
-### [\<ins>](https://github.com/markdown-it/markdown-it-ins)
-
-++Inserted text++
-
-
-### [\<mark>](https://github.com/markdown-it/markdown-it-mark)
-
-==Marked text==
-
-
-### [Footnotes](https://github.com/markdown-it/markdown-it-footnote)
-
-Footnote 1 link[^first].
-
-Footnote 2 link[^second].
-
-Inline footnote^[Text of inline footnote] definition.
-
-Duplicated footnote reference[^second].
-
-[^first]: Footnote **can have markup**
-
-    and multiple paragraphs.
-
-[^second]: Footnote text.
-
-
-### [Definition lists](https://github.com/markdown-it/markdown-it-deflist)
-
-Term 1
-
-:   Definition 1
-with lazy continuation.
-
-Term 2 with *inline markup*
-
-:   Definition 2
-
-        { some code, part of Definition 2 }
-
-    Third paragraph of definition 2.
-
-_Compact style:_
-
-Term 1
-  ~ Definition 1
-
-Term 2
-  ~ Definition 2a
-  ~ Definition 2b
-
-
-### [Abbreviations](https://github.com/markdown-it/markdown-it-abbr)
-
-This is HTML abbreviation example.
-
-It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
-
-*[HTML]: Hyper Text Markup Language
-
-### [Custom containers](https://github.com/markdown-it/markdown-it-container)
-
-::: warning
-*here be dragons*
-:::
+<iframe src="https://gmail4009016.autodesk360.com/g/shares/SH90d2dQT28d5b60281151835f2de52ebf95"
+        width="70%"
+        height="450"
+        style="border:none; display:block; margin:0 auto;"
+        allowfullscreen></iframe>

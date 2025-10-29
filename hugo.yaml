@@ -1,5 +1,5 @@
 baseURL: "https://267814.github.io/267814_ZPC_2025/"
-title: Welcome on my site!
+title: How I Made (Almost) Anything!
 languageCode: en-us
 theme: tailbliss
 DefaultContentLanguage: en
@@ -57,7 +57,7 @@ params:
   disable_theme_toggle: false
   disable_stay_uptodate: true
 
-  siteLogoText: "project how to make (almost) Anything"   # Text vlevo nahoře
+  siteLogoText: "HTMAA Portfolio"   # Text vlevo nahoře
   copyrightText: "Jan Hrnek"            # Text dole v patičce
 
   p1:
@@ -69,7 +69,7 @@ params:
       - text: "In addition, you will find resources and inspiration for your own projects. I hope this website provides useful insights into engineering design, modern technologies, and creative problem-solving."
   p2:
     heading: "Nothing more yet."
-    image: "images/pages/hacktoberfest.jpg"
+    image:
     content:
       - text: "Coming soon..."
       - type: "table"

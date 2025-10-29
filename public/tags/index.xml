@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Welcome on my site!</title>
-    <link>https://267814.github.io/267814_ZPC_2025/tags/</link>
-    <description>Recent content in Tags on Welcome on my site!</description>
+    <title>Tags on How I Made (Almost) Anything!</title>
+    <link>http://localhost:1313/267814_ZPC_2025/tags/</link>
+    <description>Recent content in Tags on How I Made (Almost) Anything!</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 18 Jun 2022 11:10:36 +0800</lastBuildDate>
-    <atom:link href="https://267814.github.io/267814_ZPC_2025/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/267814_ZPC_2025/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Mini-Project</title>
-      <link>https://267814.github.io/267814_ZPC_2025/tags/mini-project/</link>
+      <link>http://localhost:1313/267814_ZPC_2025/tags/mini-project/</link>
       <pubDate>Sat, 18 Jun 2022 11:10:36 +0800</pubDate>
-      <guid>https://267814.github.io/267814_ZPC_2025/tags/mini-project/</guid>
+      <guid>http://localhost:1313/267814_ZPC_2025/tags/mini-project/</guid>
       <description></description>
     </item>
     <item>
       <title>News</title>
-      <link>https://267814.github.io/267814_ZPC_2025/tags/news/</link>
+      <link>http://localhost:1313/267814_ZPC_2025/tags/news/</link>
       <pubDate>Wed, 18 May 2022 11:10:36 +0800</pubDate>
-      <guid>https://267814.github.io/267814_ZPC_2025/tags/news/</guid>
+      <guid>http://localhost:1313/267814_ZPC_2025/tags/news/</guid>
       <description></description>
     </item>
     <item>
-      <title>Blog</title>
-      <link>https://267814.github.io/267814_ZPC_2025/tags/blog/</link>
+      <title>Tags/Blog</title>
+      <link>http://localhost:1313/267814_ZPC_2025/tags/blog/</link>
       <pubDate>Sat, 18 Dec 2021 11:10:36 +0800</pubDate>
-      <guid>https://267814.github.io/267814_ZPC_2025/tags/blog/</guid>
+      <guid>http://localhost:1313/267814_ZPC_2025/tags/blog/</guid>
       <description></description>
     </item>
   </channel>

@@ -1,11 +1,11 @@
 ---
-title: "2D graphics and cutting"
+title: "2D graphics"
 date: 2021-12-18T11:10:36+08:00
 draft: false
 language: en
 featured_image: ../assets/images/featured/featured-img-placeholder.png
-summary: Here I was supposed to create my own logo and cut it out using a plotter and then make a little plate from plexiglass on a laser cutter.
-description: Here I was supposed to create my own logo and cut it out using a plotter and then make a little plate from plexiglass on a laser cutter.
+summary: Here I was supposed to create my own logo and cut it out using a plotter.
+description: Here I was supposed to create my own logo and cut it out using a plotter.
 author: Jan Hrnek
 authorimage: /images/jan.jpg
 categories: Blog
@@ -54,19 +54,3 @@ In the end you take the logo and stick it on a transparent tape like piece, so y
 <p align="center">
   <img src="/images/vuzite-logo.jpg" alt="Logo pouzito" class="rounded-2xl shadow-lg" width="500">
 </p>
-
-# Laser Cutting
-
-***
-
----
-
-___
-
-
-
-## Process
-
-
-
-## Final product

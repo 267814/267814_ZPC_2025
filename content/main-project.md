@@ -1,5 +1,5 @@
 ---
-title: "Joystick-Controlled Tripod"
+title: "Handheld Gimbal"
 date: 2021-12-18T11:10:36+08:00
 draft: false
 language: en
@@ -15,18 +15,17 @@ featured_image: /images/Tripod_scheme.jpg
 
 ___
 
-The **Joystick-Controlled Tripod** is a motorized camera stand designed to provide precise and intuitive control over device positioning.  
-Using a joystick, the user can easily adjust the tripod’s height, rotate it a full 360°, and tilt the mounted phone or camera to the desired angle.  
+The **3-Axis Camera Gimbal** is an advanced motorized stabilization system designed to address the challenge of shaky footage in handheld videography. Its primary purpose is to maintain a perfectly smooth and stable camera orientation by actively and automatically compensating for unwanted external movements, such as hand tremors or vibrations from walking.
 
-The system is powered by an Arduino controller in combination with a gyroscope, ensuring smooth and accurate movements.  
-Additionally, the tripod includes a dedicated button that instantly resets the device to its default home position, offering both convenience and reliability during operation.
+At the core of this system is an **Inertial Measurement Unit *(IMU)***, which integrates a gyroscope and an accelerometer. This sensor package provides high-frequency, real-time data about the gimbal's current orientation in 3D space. This data is used to stabilize three independent axes of motion: pitch *(up/down tilt)*, roll *(side-to-side tilt)*, and yaw *(left/right rotation)*. The physical stabilization is achieved by three servo motors, with each motor precisely counteracting the detected motion on its respective axis.
 
+The entire system is governed by an **Arduino Nano** controller, which functions as the central processing unit. The Arduino continuously reads orientation data from the IMU and executes a closed-loop feedback mechanism. It calculates the error between the current orientation and the desired stable orientation *(i.e., "level")*. To ensure the corrective movements are both rapid and precise without oscillating or overshooting, a Proportional-Integral-Derivative *(PID)* control algorithm is implemented. This project demonstrates a practical application of mechatronic principles, combining sensor technology, control theory, and mechanical design to create a functional stabilization prototype.
 ## Scheme
 
-Here is a very simple scheme, that shows how will the tripod works.
+Here is a very simple scheme, that shows how will the gimbal works and look.
 
 <p align="center">
-  <img src="/images/Tripod_scheme.jpg" alt="Tripod scheme" class="rounded-2xl shadow-lg" width="600">
+  <img src="/images/" alt="Gimbal scheme" class="rounded-2xl shadow-lg" width="600">
 </p>
 
 
@@ -38,26 +37,30 @@ Here is a very simple scheme, that shows how will the tripod works.
 
 ___
 
-## Body
-
-<iframe src="https://gmail4009016.autodesk360.com/g/shares/SH286ddQT78850c0d8a40376fb5c0b93fc4c"
-        width="70%"
-        height="450"
-        style="border:none; display:block; margin:0 auto;"
-        allowfullscreen></iframe>
+## Handle
 
 ## Holder
-## Telescopic Shaft
-## Worm gear set
+## Arms
+## 
 ## Controls
 
 ### Arduino
 ### Gyroscope
 ### Motors
-### JoyStick 
+### JoyStick
+### Code
+
 ## Logo
 
 # Prototype
+
+***
+
+---
+
+___
+
+# Final product
 
 ***
 
