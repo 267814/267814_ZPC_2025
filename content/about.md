@@ -7,13 +7,31 @@ description: About Us
 featured_image: ../assets/images/featured/featured-img-placeholder.png
 ---
 
-My name is Jan Hrnek, and I am a second-year student at the Faculty of Mechanical Engineering, Brno University of Technology. This website was created as part of the course How to Make (Almost) Anything.
+Hello! My name is Jan Hrnek, and I'm a student at the Faculty of Mechanical Engineering at Brno University of Technology. This website is my project for the fantastic course, "How to Make (Almost) Anything."
 
-I have been pursuing studies in mechanical engineering for over five years.
+I’ve been immersed in the world of mechanical engineering for over five years now, and I'm particularly passionate about modern technologies. My main interests lie in mobile devices, computer systems, and the innovations happening in the automotive industry.
 
-My interests include modern technologies, particularly in the fields of mobile devices, computer systems, and the automotive industry.
+When I’m not focused on my studies or working on a new project, I like to stay active and recharge. You can often find me on the volleyball court, exploring new worlds through PC games, or planning my next trip. I find that traveling, in particular, is a great way to find new perspectives and ideas.
 
-I hope this website will serve as a source of inspiration for you!
+I’m excited to share my work with you, and I hope this website serves as a source of inspiration for your own projects!
+
+<div class="flex flex-col md:flex-row gap-4">
+
+  <div class="flex-1 md:w-1/2">
+    <img 
+      src="/images/Ja1.jpg" 
+      alt="Popis prvního obrázku" 
+      class="rounded-2xl shadow-lg w-full h-auto">
+  </div>
+
+  <div class="flex-1 md:w-1/2">
+    <img 
+      src="/images/Ja2.jpg" 
+      alt="Popis druhého obrázku" 
+      class="rounded-2xl shadow-lg w-full h-auto">
+  </div>
+
+</div>
 
 <!--
 # h1 Heading :blush:

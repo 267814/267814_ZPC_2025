@@ -24,7 +24,19 @@ In this mini-project we were introduced do 3D scanning and modeling. In reality 
 This mini-project was devied into 4 task, in which we tested our knowledge and experinece in SolidWorks. Me as a holder of 2 certificates (CSWA, CSWP), were these tasks not as hard as for others.
 After I made all of the models and assembly, I save them as .STEP files and imported them into Fusion to make the interactive models on this web.
 
-# Piston-rod
+# CAD modeling
+
+***
+
+---
+
+___
+
+This section shows the work I did in CAD, which is basically the starting point for almost every project. I used the SolidWorks software to design my parts. Before you can make or print anything, you first have to build it on the computer.
+
+My goal here was to get comfortable with the software by designing many different kinds of objects. I practiced making everything from simple shapes to more complex assemblies with multiple parts that fit together. This was the essential "drawing board" phase where I turned my ideas into 3D models.
+
+## Piston-rod
 
 ***
 
@@ -41,7 +53,7 @@ The first task was to make a piston-rod. This one was the easiest of them all, b
         style="border:none; display:block; margin:0 auto;"
         allowfullscreen></iframe>
         
-# Shaft
+## Shaft
 
 ***
 
@@ -57,7 +69,7 @@ Here the main core of the task wasn't the model itself but the drawing. Also ver
         style="border:none; display:block; margin:0 auto;"
         allowfullscreen></iframe>
 
-## Drawing
+### Drawing
 
 As said before to make this drawing we needed to know how to correctly make a drawing. It is a fairly easy drawing most of us already leant in high school. However there are some things that you need technical knowledge about *(for example: Geometrical Tolerances, Tolerances, etc.)*
 
@@ -74,7 +86,7 @@ What is in the drawing:
   <img src="/images/hridel.jpg" alt="Tripod scheme" class="rounded-2xl shadow-lg" width="700">
 </p>
 
-# Cardan assembly
+## Cardan assembly
 
 ***
 
@@ -91,7 +103,7 @@ In this task, we were given an assembly to put together. Basicly it's a lever th
         allowfullscreen></iframe>
 
         
-# Holder
+## Holder
 
 ***
 
@@ -107,7 +119,7 @@ After we completed the easier tasks, the more experienced ones moved to these 2 
         style="border:none; display:block; margin:0 auto;"
         allowfullscreen></iframe>
         
-# Cover
+## Cover
 
 ***
 
@@ -117,8 +129,76 @@ ___
 
 On the other hand, the cover was indeed hard. It definetley took me longer then I expected. Here we had to use our 3D imagination to another level, bcs the drawing which was provided was as little dimensioned as it could. The biggest role had the base sketch, which needed to be designed as good as possible in order to bypass potential problems in the model.
 
-<iframe src="https://gmail4009016.autodesk360.com/g/shares/SH90d2dQT28d5b60281151835f2de52ebf95"
-        width="70%"
-        height="450"
-        style="border:none; display:block; margin:0 auto;"
-        allowfullscreen></iframe>
+<div class="mb-8">
+  <iframe src="https://gmail4009016.autodesk360.com/g/shares/SH90d2dQT28d5b60281151835f2de52ebf95"
+        width="70%"
+        height="450"
+        style="border:none; display:block; margin:0 auto;"
+        allowfullscreen></iframe>
+</div>
+
+# 3D printing
+
+***
+
+---
+
+___
+
+For my 3D printing project, I wanted to move beyond static models and create something with functional, moving parts. I decided to design and build a mechanical desk status sign that can switch between "FREE" and "BUSY." This project was a perfect test of designing for assembly, checking tolerances, and printing multiple interlocking components to create a working final product.
+
+## Disassembled View
+
+***
+
+---
+
+___
+
+Here are all the individual components that make up the final assembly, laid out before being put together. I designed this as a multi-part print, using contrasting black and white filaments to give it a clean look. You can see the base, the main vertical supports, the large spur gear, the smaller pinion gear, the knobs, and of course, the two "FREE" and "BUSY" signs, which are designed to function as gear racks.
+
+<p align="center">
+  <img src="/images/Dissasambled.jpg" alt="Prototyp loga" class="rounded-2xl shadow-lg" width="600>
+</p>
+
+## The Mechanism
+
+***
+
+---
+
+___
+
+This close-up shot shows the core of the device. The entire mechanism is manually operated by turning the small knob at the bottom. This knob is attached to a small pinion gear. This pinion drives the larger spur gear at a 2:1 gear ratio, which makes the motion smooth and controlled. This rotational motion is then converted into linear motion using a rack and pinion system. Both the "FREE" and "BUSY" signs are racks (the flat parts with teeth), and they are engaged with the large gear on opposite sides.
+
+<p align="center">
+  <img src="/images/Mechanism.jpg" alt="Prototyp loga" class="rounded-2xl shadow-lg" width="500">
+</p>
+
+## Final Product in Action
+
+***
+
+---
+
+___
+
+And here is the final, assembled product demonstrating its two states. When I turn the knob, the gear system engages smoothly. The 2:1 ratio means that a 180-degree turn of the large gear (driven by a full 360-degree turn of the knob) swaps the signs. In one position, the "FREE" sign is raised while the "BUSY" sign is hidden. With another turn, the "BUSY" sign moves up, and the "FREE" sign retracts. It was a complete success, and now I have a functional, 3D-printed gadget for my desk.
+
+<div class="flex flex-col md:flex-row gap-4">
+
+  <div class="flex-1 md:w-1/2">
+    <img 
+      src="/images/Busy.jpg" 
+      alt="Popis prvního obrázku" 
+      class="rounded-2xl shadow-lg w-full h-auto">
+  </div>
+
+  <div class="flex-1 md:w-1/2">
+    <img 
+      src="/images/Free.jpg" 
+      alt="Popis druhého obrázku" 
+      class="rounded-2xl shadow-lg w-full h-auto">
+  </div>
+
+</div>

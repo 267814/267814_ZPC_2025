@@ -43,12 +43,5 @@
       <guid>http://localhost:1313/267814_ZPC_2025/posts/blog-post-6/</guid>
       <description>Here we were learning how to use and code Arduino and various components for it. For example buttons, LED diodes, potenciometrs etc.</description>
     </item>
-    <item>
-      <title>Laser cutting</title>
-      <link>http://localhost:1313/267814_ZPC_2025/posts/blog-post-3/</link>
-      <pubDate>Sat, 18 Dec 2021 11:10:36 +0800</pubDate>
-      <guid>http://localhost:1313/267814_ZPC_2025/posts/blog-post-3/</guid>
-      <description>Using laser cutter we were supposed to make some object out of cardboard.</description>
-    </item>
   </channel>
 </rss>

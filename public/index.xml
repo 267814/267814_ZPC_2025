@@ -83,14 +83,7 @@
       <link>http://localhost:1313/267814_ZPC_2025/about/</link>
       <pubDate>Sat, 18 Dec 2021 11:10:36 +0800</pubDate>
       <guid>http://localhost:1313/267814_ZPC_2025/about/</guid>
-      <description>&lt;p&gt;My name is Jan Hrnek, and I am a second-year student at the Faculty of Mechanical Engineering, Brno University of Technology. This website was created as part of the course How to Make (Almost) Anything.&lt;/p&gt;&#xA;&lt;p&gt;I have been pursuing studies in mechanical engineering for over five years.&lt;/p&gt;&#xA;&lt;p&gt;My interests include modern technologies, particularly in the fields of mobile devices, computer systems, and the automotive industry.&lt;/p&gt;&#xA;&lt;p&gt;I hope this website will serve as a source of inspiration for you!&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Blog Post 7</title>
-      <link>http://localhost:1313/267814_ZPC_2025/posts/blog-post-7/</link>
-      <pubDate>Sat, 18 Dec 2021 11:10:36 +0800</pubDate>
-      <guid>http://localhost:1313/267814_ZPC_2025/posts/blog-post-7/</guid>
-      <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus, odio nec venenatis lacinia, lacus lectus varius nisi, in tristique mi purus ut libero.</description>
+      <description>&lt;p&gt;Hello! My name is Jan Hrnek, and I&amp;rsquo;m a student at the Faculty of Mechanical Engineering at Brno University of Technology. This website is my project for the fantastic course, &amp;ldquo;How to Make (Almost) Anything.&amp;rdquo;&lt;/p&gt;&#xA;&lt;p&gt;I’ve been immersed in the world of mechanical engineering for over five years now, and I&amp;rsquo;m particularly passionate about modern technologies. My main interests lie in mobile devices, computer systems, and the innovations happening in the automotive industry.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Contact</title>
@@ -119,13 +112,6 @@
       <pubDate>Sat, 18 Dec 2021 11:10:36 +0800</pubDate>
       <guid>http://localhost:1313/267814_ZPC_2025/prose/</guid>
       <description>&lt;h2 id=&#34;tailwindcsstypography&#34;&gt;@tailwindcss/typography&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/tailwindlabs/tailwindcss-typography&#34;&gt;View on GitHub&lt;/a&gt;!&lt;/p&gt;&#xA;&lt;p&gt;Beautiful typographic defaults for HTML you don&amp;rsquo;t control.&lt;/p&gt;&#xA;&lt;p&gt;The official Tailwind CSS Typography plugin provides a set of prose classes you can use to add beautiful typographic defaults to any vanilla HTML you don’t control, like HTML rendered from Markdown, or pulled from a CMS.&lt;/p&gt;&#xA;&lt;p&gt;Tailwind CSS IntelliSense extension for Visual Studio Code&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;lt;article class=&amp;#34;prose lg:prose-xl&amp;#34;&amp;gt;&#xD;&#xA;  {{ markdown }}&#xD;&#xA;&amp;lt;/article&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;To see what it looks like in action, check out our &lt;a href=&#34;https://play.tailwindcss.com/uj1vGACRJA?layout=preview&#34;&gt;live demo&lt;/a&gt; on Tailwind Play.&#xA;​&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Laser cutting</title>
-      <link>http://localhost:1313/267814_ZPC_2025/posts/blog-post-3/</link>
-      <pubDate>Sat, 18 Dec 2021 11:10:36 +0800</pubDate>
-      <guid>http://localhost:1313/267814_ZPC_2025/posts/blog-post-3/</guid>
-      <description>Using laser cutter we were supposed to make some object out of cardboard.</description>
     </item>
     <item>
       <title>News Post 3</title>

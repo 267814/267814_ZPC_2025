@@ -178,10 +178,78 @@
   </div>
   
   <div class="px-6 pt-6 pb-16 mx-auto prose max-w-none w-full prose-h1:text-2xl dark:text-white">
-  <h1 id="3d-scanning">3D scanning</h1>
+  <h1 id="intro">Intro</h1>
 <hr>
 <hr>
 <hr>
+<p>In this project, I&rsquo;ll walk through the process I used for 3D scanning an object. I used a Simscan 3D scanner to capture the data and then analyzed it using GOM Inspect software. My goal was to create an accurate 3D model that I could then inspect and measure.</p>
+<h2 id="getting-the-object-ready">Getting the Object Ready</h2>
+<hr>
+<hr>
+<hr>
+<p>First, I had to prepare the brush for scanning. I stuck small, reflective dots (markers) all over the brush, the turntable it&rsquo;s on, and the reference spheres. These markers are essential, as they helped my scanner track its position and perfectly align all the scans later.</p>
+<p align="center">
+  <img src="http://localhost:1313/267814_ZPC_2025/images/Brush_rdy.jpg" alt="Tripod scheme" class="rounded-2xl shadow-lg" width="600">
+</p>
+<h2 id="scanning-the-brush">Scanning the Brush</h2>
+<hr>
+<hr>
+<hr>
+<p>These images show the actual scanning in progress. As I moved the scanner around the brush, I could see the 3D model (the &ldquo;mesh&rdquo;) being built on the screen in real-time. This live feedback was great because it showed me exactly which parts I&rsquo;ve captured and if I&rsquo;ve missed any spots.</p>
+<div class="flex flex-col md:flex-row gap-4 mb-8">
+  <div class="flex-1 md:w-1/2">
+    <img 
+      src="http://localhost:1313/267814_ZPC_2025/images/Sken1.jpg" 
+      alt="Popis prvního obrázku" 
+      class="rounded-2xl shadow-lg w-full h-auto">
+  </div>
+  <div class="flex-1 md:w-1/2">
+    <img 
+      src="http://localhost:1313/267814_ZPC_2025/images/Sken2.jpg" 
+      alt="Popis druhého obrázku" 
+      class="rounded-2xl shadow-lg w-full h-auto">
+  </div>
+</div>
+<h2 id="joining-the-scans">Joining the Scans</h2>
+<hr>
+<hr>
+<hr>
+<p>To capture the entire object, I scanned it in a few different parts (like the top and bottom). In this step, I &ldquo;stitched&rdquo; those individual scans together to make one complete model. The software used the markers I had placed earlier to line everything up perfectly.</p>
+<p>As you could see in the scans, the bristles were the most challenging part. They are very thin, dark, and complex, which makes them difficult for a 3D scanner to capture perfectly. However, this wasn&rsquo;t a major problem for my project. I knew a perfect scan of every single bristle wasn&rsquo;t that important because it would be much easier to model them from scratch later in CAD using a simple &ldquo;pattern&rdquo; feature. I mainly focused on getting clean, accurate data for the solid body—the handle and the head.</p>
+<p>After merging, I had one unified 3D model of the main body, ready to be exported as an STL file.</p>
+<p align="center">
+  <img src="http://localhost:1313/267814_ZPC_2025/images/Sken_join.jpg" alt="Tripod scheme" class="rounded-2xl shadow-lg" width="600">
+</p>
+<h2 id="analyzing-the-3d-model">Analyzing the 3D Model</h2>
+<hr>
+<hr>
+<hr>
+<p>After exporting the finished model, I imported it into GOM Inspect for analysis. In this image, I&rsquo;m using the software to calculate the total surface area of the scanned brush, which came out to 33,522.27 (mm²).</p>
+<p align="center">
+  <img src="http://localhost:1313/267814_ZPC_2025/images/Smetak obsah.png" alt="Tripod scheme" class="rounded-2xl shadow-lg" width="600">
+</p>
+<h2 id="measuring-the-overall-length">Measuring the Overall Length</h2>
+<hr>
+<hr>
+<hr>
+<p>GOM Inspect is also great for taking precise measurements. Here, I measured the brush&rsquo;s total length. I used the &ldquo;2-Point Distance&rdquo; tool to select the two furthest points on the model—from the end of the handle (Point 1) to the tip of the brush head (Point 2)—which gave me a total length of 279.809 mm.</p>
+<p align="center">
+  <img src="http://localhost:1313/267814_ZPC_2025/images/Smetak max velikost.png" alt="Tripod scheme" class="rounded-2xl shadow-lg" width="600">
+</p>
+<h2 id="measuring-specific-features">Measuring Specific Features</h2>
+<hr>
+<hr>
+<hr>
+<p>Finally, I wanted to show how I can measure any specific feature. In this last image, I&rsquo;m checking the width of the handle at a specific point. By selecting two points (Point 3 and Point 4) on opposite sides, the software told me the exact width was 35.704 mm. This shows how useful the 3D model is for pulling any specific measurement I need.</p>
+<p align="center">
+  <img src="http://localhost:1313/267814_ZPC_2025/images/Smetak libovolny rozmer.png" alt="Tripod scheme" class="rounded-2xl shadow-lg" width="600">
+</p>
+<h1 id="reworking-the-scan-in-cad">Reworking the Scan in CAD</h1>
+<hr>
+<hr>
+<hr>
+<p>The scanned STL file I created is a perfect, highly accurate &ldquo;snapshot&rdquo; of the brush, but it&rsquo;s not an editable design. It&rsquo;s just a &ldquo;skin&rdquo; made of millions of triangles. So, for the next phase of my project, I imported this mesh into my CAD software. My goal here was to reverse engineer it, or in other words, turn that static scan data back into a &ldquo;living&rdquo; solid model I could actually edit.</p>
+<p>I used the scan as a 3D blueprint. By creating 2D sketches on different planes and tracing the key outlines of the brush&rsquo;s handle and head, I gradually rebuilt the object using standard CAD features (like extrudes, lofts, and fillets). As I mentioned, I also modeled the simplified bristles from scratch. Now I have this complete, parametric model—a true digital twin—and I can easily modify the design, like changing the handle&rsquo;s grip or preparing a new version for 3D printing.</p>
 
   </div>
 </article>
