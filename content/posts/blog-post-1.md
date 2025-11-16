@@ -6,8 +6,8 @@ language: en
 featured_image: "images/featured/featured-img-placeholder.png"
 summary: A basic website built with Visual Studio Code, command line, and GitHub.
 description: A basic website built with Visual Studio Code, command line, and GitHub.
-author: Jan Hrnek
-authorimage: /images/jan.jpg
+author:
+authorimage:
 categories: Blog
 tags: ["Mini-project"]
 ---

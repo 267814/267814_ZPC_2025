@@ -6,8 +6,8 @@ language: en
 featured_image: ../assets/images/featured/featured-img-placeholder.png
 summary: Using SolidWorks we were making some easy and fairly advanced 3D models. And also we had to desing some contraption and 3D print it.
 description: Using SolidWorks we were making some easy and fairly advanced 3D models. And also we had to desing some contraption and 3D print it.
-author: Jan Hrnek
-authorimage: /images/jan.jpg
+author:
+authorimage:
 categories: Blog
 tags: ["Mini-project"]
 ---
@@ -158,7 +158,7 @@ ___
 Here are all the individual components that make up the final assembly, laid out before being put together. I designed this as a multi-part print, using contrasting black and white filaments to give it a clean look. You can see the base, the main vertical supports, the large spur gear, the smaller pinion gear, the knobs, and of course, the two "FREE" and "BUSY" signs, which are designed to function as gear racks.
 
 <p align="center">
-  <img src="/images/Dissasambled.jpg" alt="Prototyp loga" class="rounded-2xl shadow-lg" width="600>
+  <img src="/images/Dissasambled.jpg" alt="Prototyp loga" class="rounded-2xl shadow-lg" width="500">
 </p>
 
 ## The Mechanism

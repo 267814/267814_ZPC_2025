@@ -6,8 +6,8 @@ language: en
 featured_image: ../assets/images/featured/featured-img-placeholder.png
 summary: In this mini-project we were introduced to 3D scanning, using portable scanner.
 description: In this mini-project we were introduced to 3D scanning, using portable scanner.
-author: TailBliss
-authorimage: ../assets/images/global/author.webp
+author: 
+authorimage:
 categories: blog
 tags: ["Mini-project"]
 ---

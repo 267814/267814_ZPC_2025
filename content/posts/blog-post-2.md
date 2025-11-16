@@ -6,8 +6,8 @@ language: en
 featured_image: ../assets/images/featured/featured-img-placeholder.png
 summary: Here I was supposed to create my own logo and cut it out using a plotter.
 description: Here I was supposed to create my own logo and cut it out using a plotter.
-author: Jan Hrnek
-authorimage: /images/jan.jpg
+author:
+authorimage:
 categories: Blog
 tags: ["Mini-project"]
 ---
