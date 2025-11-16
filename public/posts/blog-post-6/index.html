@@ -227,6 +227,106 @@
     playsinline>
       </video>
 </div>
+<h3 id="code">Code</h3>
+<p>Here you can see the code for this circuit. And how it works.</p>
+<pre><code>#include &lt;Servo.h&gt; 
+
+Servo mojeServo;  
+
+// --- Definice pinů ---
+const int potenciometrPin = A0; 
+const int servoPin = 9;         
+const int ledZelenaPin = 12;
+const int ledOranzovaPin = 11;
+const int ledCervenaPin = 10;
+// Pin pro motorek jsme smazali
+
+// --- Proměnné pro časování ---
+
+// Pro 3-sekundový alarm
+unsigned long casVstupuDoCervene = 0; // Kdy jsme vešli do červené zóny
+const long limitAlarmu = 3000; // 3 sekundy v milisekundách
+
+// Pro blikání LED
+unsigned long casPoslednihoBliknuti = 0; // Kdy jsme naposled blikli
+bool stavBlikaniLED = false; // Stav blikající LED (true=svítí, false=nesvítí)
+const int intervalBlikani = 100; // Rychlost blikání (rychlé)
+
+
+void setup() {
+  mojeServo.attach(servoPin);
+  
+  pinMode(ledZelenaPin, OUTPUT);
+  pinMode(ledOranzovaPin, OUTPUT);
+  pinMode(ledCervenaPin, OUTPUT);
+  // pinMode pro motorek jsme smazali
+}
+
+void loop() {
+  // Zjistíme aktuální čas na začátku smyčky
+  unsigned long aktualniCas = millis();
+  
+  int hodnotaPotenciometru = analogRead(potenciometrPin);
+  int uhelServa = map(hodnotaPotenciometru, 0, 1023, 0, 180);
+  mojeServo.write(uhelServa);
+
+  // --- OVLÁDÁNÍ LED A ALARMU ---
+
+  if (uhelServa &lt;= 60) {
+    // Zóna 1: (1 LED svítí) - Zelená
+    digitalWrite(ledZelenaPin, HIGH);   
+    digitalWrite(ledOranzovaPin, LOW);
+    digitalWrite(ledCervenaPin, LOW);
+    
+    casVstupuDoCervene = 0; // Resetujeme časovač alarmu
+    
+  } else if (uhelServa &gt; 60 &amp;&amp; uhelServa &lt;= 120) {
+    // Zóna 2: (2 LED svítí) - Zelená + Oranžová
+    digitalWrite(ledZelenaPin, HIGH);   
+    digitalWrite(ledOranzovaPin, HIGH); 
+    digitalWrite(ledCervenaPin, LOW);
+    
+    casVstupuDoCervene = 0; // Resetujeme časovač alarmu
+    
+  } else {
+    // Zóna 3: (3 LED svítí) - Všechny (ČERVENÁ ZÓNA)
+    digitalWrite(ledZelenaPin, HIGH);   
+    digitalWrite(ledOranzovaPin, HIGH);  
+    // Červenou LED budeme ovládat speciálně
+
+    // --- LOGIKA ALARMU ---
+    
+    // Zkontrolujeme, jestli jsme právě vstoupili do červené zóny
+    if (casVstupuDoCervene == 0) {
+      casVstupuDoCervene = aktualniCas; // Uložíme čas vstupu
+    }
+
+    // Zkontrolujeme, jestli už uplynul limit
+    if (aktualniCas - casVstupuDoCervene &lt; limitAlarmu) {
+      // Stav 1: Ještě neuplynuly 3 sekundy
+      digitalWrite(ledCervenaPin, HIGH); // Červená LED jen svítí
+    
+    } else {
+      // Stav 2: Uplynuly 3 sekundy - SPUSŤ BLIKÁNÍ
+      if (aktualniCas - casPoslednihoBliknuti &gt;= intervalBlikani) {
+        casPoslednihoBliknuti = aktualniCas; // Uložíme čas bliknutí
+        
+        // Přepneme stav LED
+        if (stavBlikaniLED == false) {
+          stavBlikaniLED = true;
+          digitalWrite(ledCervenaPin, HIGH);
+        } else {
+          stavBlikaniLED = false;
+          digitalWrite(ledCervenaPin, LOW);
+        }
+      }
+    }
+  }
+  
+  // V tomto kódu NENÍ delay(), aby mohlo časování správně fungovat
+}
+</code></pre>
+
   </div>
 </article>
 
