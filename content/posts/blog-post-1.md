@@ -3,7 +3,7 @@ title: "Web making"
 date: 2022-06-18T11:10:36+08:00
 draft: false
 language: en
-featured_image: "images/featured/featured-img-placeholder.png"
+featured_image: /images/featured/Web.png
 summary: A basic website built with Visual Studio Code, command line, and GitHub.
 description: A basic website built with Visual Studio Code, command line, and GitHub.
 author:

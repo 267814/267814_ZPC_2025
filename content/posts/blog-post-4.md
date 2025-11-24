@@ -3,7 +3,7 @@ title: "3D modeling + printing"
 date: 2021-12-18T11:10:36+08:00
 draft: false
 language: en
-featured_image: ../assets/images/featured/featured-img-placeholder.png
+featured_image: /images/featured/3D-model.png
 summary: Using SolidWorks we were making some easy and fairly advanced 3D models. And also we had to desing some contraption and 3D print it.
 description: Using SolidWorks we were making some easy and fairly advanced 3D models. And also we had to desing some contraption and 3D print it.
 author:

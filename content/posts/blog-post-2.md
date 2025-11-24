@@ -3,7 +3,7 @@ title: "2D graphics"
 date: 2021-12-18T11:10:36+08:00
 draft: false
 language: en
-featured_image: ../assets/images/featured/featured-img-placeholder.png
+featured_image: /images/featured/2D-graphic.png
 summary: Here I was supposed to create my own logo and cut it out using a plotter.
 description: Here I was supposed to create my own logo and cut it out using a plotter.
 author:
