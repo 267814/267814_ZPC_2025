@@ -1,6 +1,7 @@
 ---
 title: "Mini Projects"
 layout: "miniprojects" # Odkazujeme na novou šablonu
+draft: false
 
 # Úvodní sekce
 intro_title: "Small Ideas, Big Fun"

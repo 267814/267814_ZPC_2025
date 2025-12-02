@@ -1,6 +1,7 @@
 ---
 title: "Curriculum Vitae"
 layout: "cv"
+draft: false
 
 name: "Jan Hrnek"
 role: "Maker & Engineer"

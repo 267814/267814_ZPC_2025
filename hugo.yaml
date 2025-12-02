@@ -4,8 +4,8 @@ languageCode: en-us
 theme: tailbliss
 defaultContentLanguage: en
 
-# --- ZÁCHRANNÉ NASTAVENÍ PRO GITHUB PAGES ---
-canonifyURLs: true      # Vynutí celou adresu všude (opraví styly na podstránkách)
+# --- NASTAVENÍ PRO GITHUB PAGES ---
+canonifyURLs: true      # Vynutí celou adresu všude (opraví styly i na podstránkách)
 relativeURLs: false     # Vypneme relativní cesty (dělají bordel)
 uglyURLs: false         # Chceme hezké složky
 trailingSlash: true     # Odkazy budou končit lomítkem (nutné pro GitHub!)
