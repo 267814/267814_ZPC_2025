@@ -3,7 +3,8 @@ baseURL: 'https://267814.github.io/267814_ZPC_2025/'
 
 # TOTO PŘIDEJ - Záchranná brzda pro styly
 relativeURLs: true
-uglyURLs: true
+uglyURLs: false       # <--- ZMĚNA: Vypneme ošklivé URL (bude to about/index.html)
+trailingSlash: true   # <--- NOVINKA: Vynutíme lomítko na konci odkazu
 title: JH Portfolio
 languageCode: en-us
 theme: tailbliss
