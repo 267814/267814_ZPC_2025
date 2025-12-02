@@ -1,4 +1,9 @@
+# Změň baseURL přesně na tuto adresu (včetně lomítka na konci!)
 baseURL: 'https://267814.github.io/267814_ZPC_2025/'
+
+# TOTO PŘIDEJ - Záchranná brzda pro styly
+relativeURLs: true
+uglyURLs: true
 title: JH Portfolio
 languageCode: en-us
 theme: tailbliss
