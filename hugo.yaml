@@ -1,15 +1,12 @@
 baseURL: 'https://267814.github.io/267814_ZPC_2025/'
-
-# TOTO JE TA OPRAVA PRO 404:
-relativeURLs: true      # Zůstane zapnuté pro obrázky a CSS
-uglyURLs: false         # Vypneme "ošklivé" URL -> vytvoří se složky (about/index.html)
-trailingSlash: true     # Přidá lomítko na konec odkazů (aby seděly s těmi složkami)
-
 title: JH Portfolio
 languageCode: en-us
 theme: tailbliss
 defaultContentLanguage: en
-# ... zbytek souboru nech ...
+
+# Pro tenhle setup obvykle stačí jen toto:
+relativeURLs: true
+uglyURLs: true
 
 # --- JAZYKY ---
 languages:
