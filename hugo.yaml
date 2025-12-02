@@ -1,14 +1,15 @@
 baseURL: 'https://267814.github.io/267814_ZPC_2025/'
+
+# TOTO JE TA OPRAVA PRO 404:
+relativeURLs: true      # Zůstane zapnuté pro obrázky a CSS
+uglyURLs: false         # Vypneme "ošklivé" URL -> vytvoří se složky (about/index.html)
+trailingSlash: true     # Přidá lomítko na konec odkazů (aby seděly s těmi složkami)
+
 title: JH Portfolio
 languageCode: en-us
 theme: tailbliss
 defaultContentLanguage: en
-
-# --- NASTAVENÍ PRO GITHUB PAGES ---
-canonifyURLs: true      # Vynutí celou adresu všude (opraví styly i na podstránkách)
-relativeURLs: false     # Vypneme relativní cesty (dělají bordel)
-uglyURLs: false         # Chceme hezké složky
-trailingSlash: true     # Odkazy budou končit lomítkem (nutné pro GitHub!)
+# ... zbytek souboru nech ...
 
 # --- JAZYKY ---
 languages:
