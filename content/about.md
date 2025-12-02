@@ -2,6 +2,7 @@
 title: "About me!"
 subtitle: "Something little"
 layout: "about"
+draft: false
 ---
 
 <p>

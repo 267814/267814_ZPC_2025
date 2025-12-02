@@ -1,19 +1,16 @@
-# Změň baseURL přesně na tuto adresu (včetně lomítka na konci!)
 baseURL: 'https://267814.github.io/267814_ZPC_2025/'
-
-# 1. PRO STYLY A OBRÁZKY (Toto opraví rozbitý vzhled)
-relativeURLs: true
-canonifyURLs: false
-
-# 2. PRO ODKAZY NA PODSTRÁNKY (Toto opraví 404 chyby)
-uglyURLs: false
-trailingSlash: true
 title: JH Portfolio
 languageCode: en-us
 theme: tailbliss
 defaultContentLanguage: en
 
-# --- DEFINICE JAZYKŮ (EN / CZ) ---
+# --- ZÁCHRANNÉ NASTAVENÍ PRO GITHUB PAGES ---
+canonifyURLs: true      # Vynutí celou adresu všude (opraví styly na podstránkách)
+relativeURLs: false     # Vypneme relativní cesty (dělají bordel)
+uglyURLs: false         # Chceme hezké složky
+trailingSlash: true     # Odkazy budou končit lomítkem (nutné pro GitHub!)
+
+# --- JAZYKY ---
 languages:
   en:
     languageName: EN
