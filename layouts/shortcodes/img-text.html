@@ -1,30 +1,23 @@
 {{ if .Params.src }}
-
     <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center mb-24 relative z-10">
         
-        {{/* Výchozí nastavení */}}
         {{ $textCol := "md:col-span-5" }}
         {{ $imgCol := "md:col-span-7" }}
         {{ $imgHeight := "" }} 
         {{ $imgFit := "object-cover" }} 
         
-        {{/* Logika velikostí */}}
         {{ if eq .Params.size "small" }}
             {{ $textCol = "md:col-span-8" }}
             {{ $imgCol = "md:col-span-4" }}
             {{ $imgHeight = "max-h-[400px]" }}
-        
         {{ else if eq .Params.size "medium" }}
             {{ $textCol = "md:col-span-6" }}
             {{ $imgCol = "md:col-span-6" }}
             {{ $imgHeight = "max-h-[500px]" }}
-
-        {{/* PORTRAIT MODE */}}
         {{ else if eq .Params.size "portrait" }}
             {{ $textCol = "md:col-span-7" }}
             {{ $imgCol = "md:col-span-5" }}
             {{ $imgHeight = "aspect-[3/4]" }}
-
         {{ else if eq .Params.size "tiny" }}
             {{ $textCol = "md:col-span-9" }}
             {{ $imgCol = "md:col-span-3" }}
@@ -48,24 +41,22 @@
             {{ if .Params.src2 }}
                 <div class="grid grid-cols-2 gap-4">
                     <div class="rounded-3xl overflow-hidden border border-white/10 shadow-2xl group relative h-full">
-                        <img src="{{ .Params.src }}" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-1000 ease-out min-h-[200px]">
+                        <img src="{{ .Params.src | strings.TrimPrefix "/" | relURL }}" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-1000 ease-out min-h-[200px]">
                         <div class="absolute inset-0 bg-gradient-to-t from-[#191E22]/50 to-transparent opacity-60"></div>
                     </div>
                     <div class="rounded-3xl overflow-hidden border border-white/10 shadow-2xl group relative h-full">
-                        <img src="{{ .Params.src2 }}" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-1000 ease-out min-h-[200px]">
+                        <img src="{{ .Params.src2 | strings.TrimPrefix "/" | relURL }}" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-1000 ease-out min-h-[200px]">
                         <div class="absolute inset-0 bg-gradient-to-t from-[#191E22]/50 to-transparent opacity-60"></div>
                     </div>
                 </div>
             {{ else }}
                 <div class="rounded-3xl overflow-hidden border border-white/10 shadow-[0_0_50px_-12px_rgba(0,0,0,0.5)] group relative {{ $imgHeight }} w-full bg-[#191E22]">
-                    <img src="{{ .Params.src }}" class="w-full h-full {{ $imgFit }} transform group-hover:scale-105 transition duration-1000 ease-out">
+                    <img src="{{ .Params.src | strings.TrimPrefix "/" | relURL }}" class="w-full h-full {{ $imgFit }} transform group-hover:scale-105 transition duration-1000 ease-out">
                     <div class="absolute inset-0 bg-gradient-to-t from-[#191E22]/20 to-transparent opacity-40 pointer-events-none"></div>
                 </div>
             {{ end }}
         </div>
-
     </div>
-
 {{ else }}
     <div class="w-full mb-24 relative z-10 text-left">
         {{ if .Params.title }}
@@ -73,7 +64,6 @@
             <span class="text-[#FF425C] decoration-white/20 underline decoration-1 underline-offset-8">{{ .Params.title }}</span>
         </h2>
         {{ end }}
-        
         <div class="text-gray-300 leading-relaxed text-xl font-light tracking-wide [&_ul]:list-disc [&_ul]:pl-5 [&_li]:mb-2 [&_p]:mb-4">
             {{ .Inner | markdownify }}
         </div>

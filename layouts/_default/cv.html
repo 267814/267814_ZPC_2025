@@ -1,81 +1,17 @@
 {{ define "main" }}
-
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;0,900;1,700;1,900&display=swap');
-
-  /* 1. ABSOLUTNÍ RESET */
-  html, body {
-      width: 100%;
-      height: auto !important;
-      min-height: 100vh;
-      margin: 0; padding: 0;
-      overflow-x: hidden !important;
-      overflow-y: auto !important;
-      background-color: #191E22 !important;
-      color: white;
-      font-family: 'Poppins', sans-serif !important;
-  }
-
-  /* 2. SKRYTÍ PRVKŮ ŠABLONY */
+  html, body { width: 100%; height: auto !important; min-height: 100vh; margin: 0; padding: 0; overflow-x: hidden !important; overflow-y: auto !important; background-color: #191E22 !important; color: white; font-family: 'Poppins', sans-serif !important; }
   header, #header, nav, .header { display: none !important; }
   #my-custom-nav { display: flex !important; }
-
-  /* 3. BENTO GRID */
-  .bento-wrapper {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 140px 24px 80px 24px;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-  }
-
-  @media (min-width: 1024px) {
-      .bento-wrapper {
-          grid-template-columns: repeat(3, 1fr);
-          grid-auto-rows: minmax(min-content, max-content);
-      }
-      .col-span-2 { grid-column: span 2; }
-      .col-span-3 { grid-column: span 3; }
-      .row-span-2 { grid-row: span 2; }
-  }
-
-  /* 4. KARTY */
-  .bento-card {
-      background: #2A2A2A;
-      border: 1px solid rgba(255,255,255,0.05);
-      border-radius: 28px;
-      padding: 32px;
-      transition: transform 0.3s ease, border-color 0.3s ease;
-      display: flex;
-      flex-direction: column;
-  }
-  
-  .bento-card:hover {
-      border-color: rgba(255, 66, 92, 0.3);
-      transform: translateY(-2px);
-  }
-
-  /* 5. DEKORACE */
-  .glow-effect { 
-    position: fixed; top: 0; left: 50%; transform: translateX(-50%);
-    width: 900px; height: 900px; 
-    background: radial-gradient(circle, rgba(255, 66, 92, 0.08) 0%, rgba(25,30,34,0) 70%); 
-    filter: blur(120px); z-index: -1; pointer-events: none; 
-  }
-
-  .floating-back-btn { 
-    position: fixed; top: 100px; left: 40px; z-index: 50; 
-    backdrop-filter: blur(10px); background: rgba(42, 42, 42, 0.5); 
-    border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease; 
-  }
+  .bento-wrapper { max-width: 1200px; margin: 0 auto; padding: 140px 24px 80px 24px; display: grid; grid-template-columns: 1fr; gap: 24px; }
+  @media (min-width: 1024px) { .bento-wrapper { grid-template-columns: repeat(3, 1fr); grid-auto-rows: minmax(min-content, max-content); } .col-span-2 { grid-column: span 2; } .col-span-3 { grid-column: span 3; } .row-span-2 { grid-row: span 2; } }
+  .bento-card { background: #2A2A2A; border: 1px solid rgba(255,255,255,0.05); border-radius: 28px; padding: 32px; transition: transform 0.3s ease, border-color 0.3s ease; display: flex; flex-direction: column; }
+  .bento-card:hover { border-color: rgba(255, 66, 92, 0.3); transform: translateY(-2px); }
+  .glow-effect { position: fixed; top: 0; left: 50%; transform: translateX(-50%); width: 900px; height: 900px; background: radial-gradient(circle, rgba(255, 66, 92, 0.08) 0%, rgba(25,30,34,0) 70%); filter: blur(120px); z-index: -1; pointer-events: none; }
+  .floating-back-btn { position: fixed; top: 100px; left: 40px; z-index: 50; backdrop-filter: blur(10px); background: rgba(42, 42, 42, 0.5); border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease; }
   .floating-back-btn:hover { background: rgba(255, 66, 92, 0.1); border-color: #FF425C; transform: translateX(-5px); }
-  
-  @media (max-width: 768px) { 
-    .floating-back-btn { top: 90px; left: 20px; padding: 8px 16px; font-size: 12px; } 
-    .bento-wrapper { padding-top: 120px; }
-  }
-
+  @media (max-width: 768px) { .floating-back-btn { top: 90px; left: 20px; padding: 8px 16px; font-size: 12px; } .bento-wrapper { padding-top: 120px; } }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
   .animate-in { animation: fadeUp 0.6s ease-out forwards; opacity: 0; }
 </style>
@@ -90,7 +26,7 @@
         <a href="{{ "main-project" | relLangURL }}" class="text-gray-400 hover:text-white transition duration-300">{{ T "nav_main_project" }}</a>
       </div>
       
-      <a href="{{ "/" | relLangURL }}" class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xl md:text-2xl font-black tracking-widest uppercase text-white hover:scale-105 transition duration-300 whitespace-nowrap cursor-pointer">
+      <a href="{{ site.Home.RelPermalink }}" class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xl md:text-2xl font-black tracking-widest uppercase text-white hover:scale-105 transition duration-300 whitespace-nowrap cursor-pointer">
         JH PORTFOLIO
       </a>
       
@@ -98,23 +34,19 @@
             <div class="flex items-center gap-3 mr-2 border-r border-white/10 pr-6 h-8">
             {{ if .IsTranslated }}{{ range .AllTranslations }}<a href="{{ .Permalink }}" class="text-sm font-bold uppercase transition duration-300 {{ if eq .Language.Lang $.Language.Lang }}text-[#FF425C] pointer-events-none{{ else }}text-gray-400 hover:text-white{{ end }}">{{ .Language.LanguageName }}</a>{{ end }}{{ end }}
             </div>
-            
             <a href="{{ .Site.Params.social_media.github.url }}" target="_blank" class="bg-[#2A2A2A] border border-white/10 text-white px-6 py-2 rounded-full font-bold hover:bg-[#FF425C] hover:border-[#FF425C] hover:text-white transition duration-300 flex items-center gap-2">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
-            GitHub
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg> GitHub
             </a>
         </div>
     </nav>
 </div>
 
-<a href="{{ "about" | relLangURL }}" class="floating-back-btn rounded-full px-6 py-3 text-white font-bold uppercase tracking-wider text-sm flex items-center gap-2">
+<a href="{{ (site.GetPage "about").RelPermalink }}" class="floating-back-btn rounded-full px-6 py-3 text-white font-bold uppercase tracking-wider text-sm flex items-center gap-2">
     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
     <span class="hidden md:inline">{{ if eq .Language.Lang "cs" }}Zpět{{ else if eq .Language.Lang "de" }}Zurück{{ else }}Back{{ end }}</span>
 </a>
 
-
 <div class="bento-wrapper">
-
     <div class="col-span-3 text-center mb-8 animate-in" style="animation-delay: 0s;">
         <h1 class="text-4xl md:text-7xl font-bold text-white mb-4 uppercase tracking-tight">{{ .Title }}</h1>
         <div class="w-24 h-1 bg-[#FF425C] mx-auto rounded-full"></div>
@@ -122,7 +54,7 @@
 
     <div class="bento-card animate-in items-center text-center" style="animation-delay: 0.1s;">
         <div class="w-40 h-40 rounded-full overflow-hidden border-4 border-[#2A2A2A] shadow-xl mb-6 ring-2 ring-white/5">
-            <img src="{{ .Params.profile_image }}" class="w-full h-full object-cover">
+            <img src="{{ .Params.profile_image | strings.TrimPrefix "/" | relURL }}" class="w-full h-full object-cover">
         </div>
         <h2 class="text-2xl font-bold text-white">{{ .Params.name }}</h2>
         <p class="text-[#FF425C] font-bold text-sm uppercase tracking-widest mb-4">{{ .Params.role }}</p>
@@ -130,7 +62,6 @@
     </div>
 
     <div class="bento-card col-span-2 animate-in" style="animation-delay: 0.2s;">
-        
         <div class="mb-8">
             <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-[#FF425C]"></span> Hard Skills
@@ -141,7 +72,6 @@
                 {{ end }}
             </div>
         </div>
-        
         <div class="mb-8">
             <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-[#FF425C]"></span> Software
@@ -152,7 +82,6 @@
                 {{ end }}
             </div>
         </div>
-
         <div>
             <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-[#FF425C]"></span> Languages
@@ -163,15 +92,12 @@
                 {{ end }}
             </div>
         </div>
-
     </div>
 
     <div class="bento-card col-span-2 animate-in" style="animation-delay: 0.3s;">
         <h3 class="text-2xl font-bold text-white mb-8 flex items-center gap-3">
-            <svg class="w-6 h-6 text-[#FF425C]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-            Experience
+            <svg class="w-6 h-6 text-[#FF425C]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg> Experience
         </h3>
-        
         <div class="space-y-8 border-l-2 border-white/5 ml-3 pl-8 relative">
             {{ range .Params.experience }}
             <div class="relative group">
@@ -189,10 +115,8 @@
 
     <div class="bento-card animate-in" style="animation-delay: 0.4s;">
         <h3 class="text-2xl font-bold text-white mb-8 flex items-center gap-3">
-            <svg class="w-6 h-6 text-[#FF425C]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path></svg>
-            Education
+            <svg class="w-6 h-6 text-[#FF425C]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path></svg> Education
         </h3>
-        
         <div class="space-y-8 border-l-2 border-white/5 ml-3 pl-8 relative">
             {{ range .Params.education }}
             <div class="relative group">
@@ -206,6 +130,5 @@
             {{ end }}
         </div>
     </div>
-
 </div>
 {{ end }}

@@ -1,72 +1,58 @@
 {{ define "main" }}
-
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;0,900;1,700;1,900&display=swap');
   body, html { font-family: 'Poppins', sans-serif !important; background-color: #191E22 !important; color: white; margin: 0; padding: 0; overflow-x: hidden; }
-  
-  /* OPRAVA PATIČKY */
   header, footer, #header, #footer, nav { display: none !important; }
   #my-custom-nav { display: flex !important; }
   #my-new-footer { display: block !important; }
-
   @keyframes pageEntrance { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
   .animate-content-only { animation: pageEntrance 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; position: relative; z-index: 1; }
-  
   @keyframes cardUp { from { opacity: 0; transform: translateY(60px); } to { opacity: 1; transform: translateY(0); } }
   .card-stagger { opacity: 0; animation: cardUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
-
   .floating-back-btn { position: fixed; top: 100px; left: 40px; z-index: 50; backdrop-filter: blur(10px); background: rgba(42, 42, 42, 0.5); border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease; }
   .floating-back-btn:hover { background: rgba(255, 66, 92, 0.1); border-color: #FF425C; transform: translateX(-5px); }
   @media (max-width: 768px) { .floating-back-btn { top: 90px; left: 20px; padding: 8px 16px; font-size: 12px; } }
 </style>
-
 <div class="w-full flex justify-center bg-[#191E22] fixed top-0 left-0 z-[99999] h-[80px] border-b border-white/5" style="pointer-events: auto;">
     <nav id="my-custom-nav" class="w-full px-6 md:px-10 h-full max-w-[1440px] mx-auto relative flex items-center justify-between">
       <div class="hidden md:flex gap-8 text-sm font-bold uppercase tracking-wide flex-1">
-        <a href="{{ "about" | relLangURL }}" class="text-gray-400 hover:text-white transition duration-300">{{ T "nav_about" }}</a>
-        <a href="{{ "mini-projects" | relLangURL }}" class="text-white transition duration-300">{{ T "nav_mini_projects" }}</a>
-        <a href="{{ "main-project" | relLangURL }}" class="text-gray-400 hover:text-white transition duration-300">{{ T "nav_main_project" }}</a>
+        <a href="{{ (site.GetPage "about").RelPermalink }}" class="text-gray-400 hover:text-white transition duration-300">{{ T "nav_about" }}</a>
+        <a href="{{ (site.GetPage "mini-projects").RelPermalink }}" class="text-white transition duration-300">{{ T "nav_mini_projects" }}</a>
+        <a href="{{ (site.GetPage "main-project").RelPermalink }}" class="text-gray-400 hover:text-white transition duration-300">{{ T "nav_main_project" }}</a>
       </div>
-      
-      <a href="{{ "/" | relLangURL }}" class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xl md:text-2xl font-black tracking-widest uppercase text-white hover:scale-105 transition duration-300 whitespace-nowrap cursor-pointer">
+      <a href="{{ site.Home.RelPermalink }}" class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xl md:text-2xl font-black tracking-widest uppercase text-white hover:scale-105 transition duration-300 whitespace-nowrap cursor-pointer">
         JH PORTFOLIO
       </a>
-      
       <div class="hidden md:flex flex-1 justify-end items-center gap-6">
           <div class="flex items-center gap-3 mr-2 border-r border-white/10 pr-6 h-8">
           {{ if .IsTranslated }}{{ range .AllTranslations }}<a href="{{ .Permalink }}" class="text-sm font-bold uppercase transition duration-300 {{ if eq .Language.Lang $.Language.Lang }}text-[#FF425C] pointer-events-none{{ else }}text-gray-400 hover:text-white{{ end }}">{{ .Language.LanguageName }}</a>{{ end }}{{ end }}
           </div>
-          
           <a href="{{ .Site.Params.social_media.github.url }}" target="_blank" class="bg-[#2A2A2A] border border-white/10 text-white px-6 py-2 rounded-full font-bold hover:bg-[#FF425C] hover:border-[#FF425C] hover:text-white transition duration-300 flex items-center gap-2">
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
-          GitHub
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg> GitHub
           </a>
       </div>
     </nav>
 </div>
 
-<a href="{{ "/" | relLangURL }}" class="floating-back-btn rounded-full px-6 py-3 text-white font-bold uppercase tracking-wider text-sm flex items-center gap-2">
+<a href="{{ site.Home.RelPermalink }}" class="floating-back-btn rounded-full px-6 py-3 text-white font-bold uppercase tracking-wider text-sm flex items-center gap-2">
     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
     <span class="hidden md:inline">{{ if eq .Language.Lang "cs" }}Domů{{ else if eq .Language.Lang "de" }}Startseite{{ else }}Home{{ end }}</span>
 </a>
 
 <div class="min-h-screen bg-[#191E22] flex flex-col items-center w-full relative overflow-x-hidden animate-content-only">
-      
       <div class="w-full flex flex-col items-center justify-start pt-32 px-6 pb-20 max-w-[1440px] mx-auto">
-        
         <div class="text-center mb-20 max-w-3xl">
             <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 uppercase tracking-tight leading-tight">
                 {{ .Params.intro_title }}<span class="text-[#FF425C]">.</span>
             </h1>
             <p class="text-gray-400 text-lg leading-relaxed font-light">{{ .Params.intro_text }}</p>
         </div>
-
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
             {{ range $index, $element := .Params.items }}
             <a href="{{ .link | relLangURL }}" class="block h-full group card-stagger" style="animation-delay: {{ add (mul $index 150) 200 }}ms;">
                 <div class="flex flex-col h-full cursor-pointer bg-[#2A2A2A] border border-white/5 rounded-2xl overflow-hidden transition hover:-translate-y-2 hover:border-[#FF425C]/50 shadow-lg">
                     <div class="w-full aspect-square overflow-hidden relative">
-                        <img src="{{ .image }}" alt="{{ .title }}" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                        <img src="{{ .image | strings.TrimPrefix "/" | relURL }}" alt="{{ .title }}" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-300"></div>
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
@@ -80,9 +66,6 @@
             </a>
             {{ end }}
         </div>
-
       </div>
-
-
 </div>
 {{ end }}

@@ -14,19 +14,10 @@
   }
    
   /* OPRAVA NAVIGACE A PATIČKY */
-  /* Tímto říkáme: Skryj všechno, co vypadá jako footer... */
   header, footer, #header, #footer { display: none !important; }
   nav { display: none !important; }
-
-  /* ...ALE zobraz náš custom navbar */
   #my-custom-nav { display: flex !important; }
-  
-  /* ...A zobraz ten JEDEN správný footer (který má ID my-new-footer) */
-  /* Pokud se tam objevují dva, toto by mělo nechat viditelný jen ten správný */
   #my-new-footer { display: block !important; }
-  
-  /* Pojistka: Pokud jsou dva footery se stejným ID, skryjeme ten první (který je uvnitř Mainu) */
-  /* Tento selektor říká: Pokud je footer uvnitř divu 'min-h-screen', skryj ho. */
   .min-h-screen footer#my-new-footer { display: none !important; } 
 
   /* Záře na pozadí */
@@ -67,22 +58,20 @@
     <nav id="my-custom-nav" class="w-full px-6 md:px-10 h-full max-w-[1440px] mx-auto relative flex items-center justify-between">
       
       <div class="hidden md:flex gap-8 text-sm font-bold uppercase tracking-wide flex-1">
-        <a href="{{ "about" | relLangURL }}" class="text-gray-400 hover:text-white transition duration-300">{{ T "nav_about" }}</a>
-        <a href="{{ "mini-projects" | relLangURL }}" class="text-gray-400 hover:text-white transition duration-300">{{ T "nav_mini_projects" }}</a>
-        <a href="{{ "main-project" | relLangURL }}" class="text-gray-400 hover:text-white transition duration-300">{{ T "nav_main_project" }}</a>
+        <a href="{{ (site.GetPage "about").RelPermalink }}" class="text-gray-400 hover:text-white transition duration-300">{{ T "nav_about" }}</a>
+        <a href="{{ (site.GetPage "mini-projects").RelPermalink }}" class="text-gray-400 hover:text-white transition duration-300">{{ T "nav_mini_projects" }}</a>
+        <a href="{{ (site.GetPage "main-project").RelPermalink }}" class="text-gray-400 hover:text-white transition duration-300">{{ T "nav_main_project" }}</a>
       </div>
       
-      <a href="{{ "/" | relLangURL }}" class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xl md:text-2xl font-black tracking-widest uppercase text-white hover:scale-105 transition duration-300 whitespace-nowrap cursor-pointer">
+      <a href="{{ site.Home.RelPermalink }}" class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xl md:text-2xl font-black tracking-widest uppercase text-white hover:scale-105 transition duration-300 whitespace-nowrap cursor-pointer">
         JH PORTFOLIO
       </a>
       
       <div class="hidden md:flex flex-1 justify-end items-center gap-6">
-         
          <div class="flex items-center gap-3 mr-2 border-r border-white/10 pr-6 h-8">
             {{ if .IsTranslated }}
                 {{ range .AllTranslations }}
-                    <a href="{{ .Permalink }}" 
-                       class="text-sm font-bold uppercase transition duration-300 {{ if eq .Language.Lang $.Language.Lang }}text-[#FF425C] pointer-events-none{{ else }}text-gray-400 hover:text-white{{ end }}">
+                    <a href="{{ .Permalink }}" class="text-sm font-bold uppercase transition duration-300 {{ if eq .Language.Lang $.Language.Lang }}text-[#FF425C] pointer-events-none{{ else }}text-gray-400 hover:text-white{{ end }}">
                         {{ .Language.LanguageName }}
                     </a>
                 {{ end }}
@@ -109,9 +98,7 @@
         <div class="hidden md:flex flex-col items-start text-left absolute left-0 top-[20%] z-30 max-w-[350px] animate-box-left">
             <div class="bg-[#2A2A2A]/60 backdrop-blur-md border border-white/10 p-6 rounded-2xl shadow-2xl transition hover:bg-[#2A2A2A]/80">
                 <h3 class="text-white font-bold text-2xl mb-3 text-[#FF425C]">{{ .Params.welcome_title }}</h3>
-                <p class="text-gray-300 text-sm leading-relaxed">
-                    {{ .Params.welcome_text }}
-                </p>
+                <p class="text-gray-300 text-sm leading-relaxed">{{ .Params.welcome_text }}</p>
             </div>
             <div class="w-24 h-px bg-gradient-to-r from-[#FF425C] to-transparent mt-4 ml-4"></div>
         </div>
@@ -119,21 +106,19 @@
         <div class="hidden md:flex flex-col items-end text-right absolute right-0 top-[45%] z-30 max-w-[350px] animate-box-right">
              <div class="bg-[#2A2A2A]/60 backdrop-blur-md border border-white/10 p-6 rounded-2xl shadow-2xl transition hover:bg-[#2A2A2A]/80">
                 <h3 class="text-white font-bold text-2xl mb-3 text-[#FF425C]">{{ .Params.what_do_title }}</h3>
-                <p class="text-gray-300 text-sm leading-relaxed">
-                    {{ .Params.what_do_text }}
-                </p>
+                <p class="text-gray-300 text-sm leading-relaxed">{{ .Params.what_do_text }}</p>
             </div>
             <div class="w-24 h-px bg-gradient-to-l from-[#FF425C] to-transparent mt-4 mr-4"></div>
         </div>
 
-        <img src="/images/Prevodovka-render.png" 
+        <img src="{{ "images/Prevodovka-render.png" | relURL }}" 
              alt="Gearbox" 
              class="w-full object-contain relative z-20 top-4 hover:scale-[1.01] transition-transform duration-700 animate-gearbox">
        
     </div>
   </div>
 
-  </div>
+</div>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {

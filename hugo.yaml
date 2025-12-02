@@ -4,11 +4,13 @@ languageCode: en-us
 theme: tailbliss
 defaultContentLanguage: en
 
-# Pro tenhle setup obvykle stačí jen toto:
-relativeURLs: true
-uglyURLs: true
+# --- DŮLEŽITÁ ZMĚNA ---
+# Vypínáme relativeURLs, aby Hugo generoval absolutní cesty od kořene projektu
+# Díky tomu a funkcím | relURL v šablonách to pojede všude.
+relativeURLs: false
+uglyURLs: false 
+# ----------------------
 
-# --- JAZYKY ---
 languages:
   en:
     languageName: EN
@@ -30,27 +32,20 @@ darkmode_js:
   - assets/js/darkmode.js
 enableInlineShortcodes: true
 
-# --- NASTAVENÍ PARAMS (Tvoje údaje) ---
 params:
   author: Jan Hrnek
-  # Cesta k tvé fotce (použije se jako ikona autora, pokud to šablona někde využije)
   authorimage: /images/Ja1.jpg
-  
-  # Obrázek, který se ukáže, když odkaz sdílíš na Facebooku/Discordu
   og_image: /images/Ja1.jpg 
-  
-  # Motto a Popis (pro vyhledávače a záložky)
   moto: "Digital Craft & Engineering"
   description: "Jan Hrnek Portfolio"
   
   disable_theme_toggle: false
-  newsletter_signup: false # Vypnul jsem newsletter, v našem designu ho nemáme
+  newsletter_signup: false 
 
-  # Sociální sítě (Pokud je nepoužíváš, nech je takto nebo smaž)
   social_media:
     github:
       enabled: true
-      url: 'https://github.com/267814/267814_ZPC_2025' # Tady si pak doplň svůj profil
+      url: 'https://github.com/267814/267814_ZPC_2025'
     facebook:
       enabled: false
     instagram:
@@ -58,7 +53,6 @@ params:
     twitter:
       enabled: false
 
-# --- TECHNICKÉ NASTAVENÍ (Neměnit) ---
 markup:
   goldmark:
     extensions:
@@ -93,8 +87,6 @@ markup:
       unsafe: true
       xhtml: false
 
-# Menu sekci necháváme, aby si stěžovala šablona, 
-# ale naše stránky používají vlastní navigaci v HTML.
 menu:
   main:
     - identifier: about
@@ -106,35 +98,11 @@ taxonomies:
   category: Categories
   tag: Tags
 
-privacy:
-  disqus:
-    disable: false
-  googleAnalytics:
-    anonymizeIP: true
-    disable: false
-    respectDoNotTrack: false
-    useSessionStorage: false
-  instagram:
-    disable: false
-    simple: false
-  twitter:
-    disable: false
-    enableDNT: false
-    simple: false
-  vimeo:
-    disable: false
-    enableDNT: false
-    simple: false
-  youtube:
-    disable: false
-    privacyEnhanced: true
-
 module:
   hugoVersion:
     extended: true
     min: "0.148.2"
 
-# Performance optimizations
 caches:
   assets:
     dir: :cacheDir/assets
@@ -152,7 +120,6 @@ caches:
     dir: :cacheDir/modules
     maxAge: 8760h
 
-# Image processing defaults
 imaging:
   quality: 85
   resampleFilter: lanczos

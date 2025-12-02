@@ -38,13 +38,15 @@
   <div class="w-full flex justify-center bg-[#191E22]/90 backdrop-blur-md fixed top-0 left-0 z-[99999] h-[80px] border-b border-white/5" style="pointer-events: auto;">
     <nav id="my-custom-nav" class="w-full px-6 md:px-10 h-full max-w-[1440px] mx-auto relative flex items-center justify-between">
       <div class="hidden md:flex gap-8 text-sm font-bold uppercase tracking-wide flex-1">
-        <a href="{{ "about" | relLangURL }}" class="text-gray-400 hover:text-white transition duration-300">{{ T "nav_about" }}</a>
-        <a href="{{ "mini-projects" | relLangURL }}" class="text-white transition duration-300">{{ T "nav_mini_projects" }}</a>
-        <a href="{{ "main-project" | relLangURL }}" class="text-gray-400 hover:text-white transition duration-300">{{ T "nav_main_project" }}</a>
+        <a href="{{ (site.GetPage "about").RelPermalink }}" class="text-gray-400 hover:text-white transition duration-300">{{ T "nav_about" }}</a>
+        <a href="{{ (site.GetPage "mini-projects").RelPermalink }}" class="text-white transition duration-300">{{ T "nav_mini_projects" }}</a>
+        <a href="{{ (site.GetPage "main-project").RelPermalink }}" class="text-gray-400 hover:text-white transition duration-300">{{ T "nav_main_project" }}</a>
       </div>
-      <a href="{{ "/" | relLangURL }}" class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xl md:text-2xl font-black tracking-widest uppercase text-white hover:scale-105 transition duration-300 whitespace-nowrap cursor-pointer">
+      
+      <a href="{{ site.Home.RelPermalink }}" class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xl md:text-2xl font-black tracking-widest uppercase text-white hover:scale-105 transition duration-300 whitespace-nowrap cursor-pointer">
         JH PORTFOLIO
       </a>
+      
       <div class="hidden md:flex flex-1 justify-end items-center gap-6">
           <div class="flex items-center gap-3 mr-2 border-r border-white/10 pr-6 h-8">
           {{ if .IsTranslated }}{{ range .AllTranslations }}<a href="{{ .Permalink }}" class="text-sm font-bold uppercase transition duration-300 {{ if eq .Language.Lang $.Language.Lang }}text-[#FF425C] pointer-events-none{{ else }}text-gray-400 hover:text-white{{ end }}">{{ .Language.LanguageName }}</a>{{ end }}{{ end }}
@@ -58,7 +60,7 @@
     </nav>
   </div>
 
-  <a href="{{ "mini-projects" | relLangURL }}" class="floating-back-btn rounded-full px-6 py-3 text-white font-bold uppercase tracking-wider text-sm flex items-center gap-2">
+  <a href="{{ (site.GetPage "mini-projects").RelPermalink }}" class="floating-back-btn rounded-full px-6 py-3 text-white font-bold uppercase tracking-wider text-sm flex items-center gap-2">
     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
     <span class="hidden md:inline">{{ if eq .Language.Lang "cs" }}Zpět{{ else if eq .Language.Lang "de" }}Zurück{{ else }}Back{{ end }}</span>
   </a>
@@ -89,7 +91,6 @@
             {{ .Content }}
         </div>
   </div>
-
 
 </div>
 

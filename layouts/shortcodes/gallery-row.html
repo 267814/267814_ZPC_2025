@@ -8,14 +8,14 @@
         {{ $height = "aspect-[4/3]" }} {{ $bg = "bg-white" }} {{ end }}
 
     <div class="rounded-3xl overflow-hidden border border-white/10 shadow-2xl group relative {{ $height }} {{ $bg }}">
-        <img src="{{ .Params.src1 }}" class="w-full h-full {{ $objFit }} transform hover:scale-105 transition duration-1000 ease-out">
+        <img src="{{ .Params.src1 | strings.TrimPrefix "/" | relURL }}" class="w-full h-full {{ $objFit }} transform hover:scale-105 transition duration-1000 ease-out">
         {{ if ne .Params.fit "contain" }}
         <div class="absolute inset-0 bg-gradient-to-t from-[#191E22]/50 to-transparent opacity-60"></div>
         {{ end }}
     </div>
 
     <div class="rounded-3xl overflow-hidden border border-white/10 shadow-2xl group relative {{ $height }} {{ $bg }}">
-        <img src="{{ .Params.src2 }}" class="w-full h-full {{ $objFit }} transform hover:scale-105 transition duration-1000 ease-out">
+        <img src="{{ .Params.src2 | strings.TrimPrefix "/" | relURL }}" class="w-full h-full {{ $objFit }} transform hover:scale-105 transition duration-1000 ease-out">
         {{ if ne .Params.fit "contain" }}
         <div class="absolute inset-0 bg-gradient-to-t from-[#191E22]/50 to-transparent opacity-60"></div>
         {{ end }}
