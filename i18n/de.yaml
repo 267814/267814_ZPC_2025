@@ -1,0 +1,25 @@
+# NAVIGACE (Německy)
+nav_about: "Über mich"
+nav_mini_projects: "Miniprojekte"
+nav_main_project: "Hauptprojekt"
+nav_contact: "Kontakt"
+nav_home: "Startseite"
+nav_blog: "Blog"
+nav_resources: "Ressourcen"
+
+# PATIČKA (Německy)
+footer_desc: "Entwicklung innovativer Lösungen durch 3D-Scannen, Drucken und Programmieren."
+footer_work: "Lass uns zusammenarbeiten!"
+footer_rights: "Alle Rechte vorbehalten."
+menu_title: "Menü"
+explore_title: "Erkunden"
+
+# Tlačítka na About stránce
+btn_certificates_title: "Zertifikate"
+btn_certificates_sub: "Meine Erfolge ansehen"
+
+btn_cv_title: "Was ich mache"
+btn_cv_sub: "Fähigkeiten & Erfahrung"
+
+btn_miniprojects_title: "Mini-Projekte"
+btn_miniprojects_sub: "Sammlung ansehen"

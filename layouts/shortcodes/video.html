@@ -1,0 +1,19 @@
+<div class="w-full mb-24 relative z-10 flex justify-center">
+    
+    {{ $size := .Get "size" }}
+    
+    {{ $width := "max-w-4xl" }} 
+    
+    {{ if eq $size "small" }}
+        {{ $width = "max-w-2xl" }}
+    {{ else if eq $size "full" }}
+        {{ $width = "w-full" }}
+    {{ end }}
+
+    <div class="{{ $width }} w-full rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative group">
+        <video src="{{ .Get "src" }}" class="w-full h-auto" autoplay loop muted playsinline></video>
+        
+        <div class="absolute inset-0 border-2 border-white/5 rounded-3xl pointer-events-none"></div>
+    </div>
+
+</div>

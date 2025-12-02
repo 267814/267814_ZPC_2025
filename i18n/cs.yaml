@@ -1,0 +1,25 @@
+# NAVIGACE (Česky)
+nav_about: "O mně"
+nav_mini_projects: "Mini projekty"
+nav_main_project: "Hlavní projekt"
+nav_contact: "Kontakt"
+nav_home: "Domů"
+nav_blog: "Blog"
+nav_resources: "Zdroje"
+
+# PATIČKA (Česky)
+footer_desc: "Vytváření inovativních řešení pomocí 3D skenování, tisku a programování."
+footer_work: "Spolupracujme!"
+footer_rights: "Všechna práva vyhrazena."
+menu_title: "Menu"
+explore_title: "Prozkoumat"
+
+# Tlačítka na About stránce
+btn_certificates_title: "Certifikáty"
+btn_certificates_sub: "Zobrazit úspěchy"
+
+btn_cv_title: "Co dělám"
+btn_cv_sub: "Dovednosti a praxe"
+
+btn_miniprojects_title: "Mini Projekty"
+btn_miniprojects_sub: "Prohlédnout sbírku"

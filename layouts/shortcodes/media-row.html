@@ -1,0 +1,76 @@
+{{/* Načtení proměnných */}}
+{{ $video := .Get "video" }}
+{{ $image := .Get "image" }}
+{{ $imgTop := .Get "img_top" }}
+{{ $imgBot := .Get "img_bottom" }}
+
+{{/* Načtení nastavení ořezu */}}
+{{ $topFit := .Get "top_fit" | default "cover" }}
+{{ $botFit := .Get "bot_fit" | default "cover" }}
+
+{{/* ========================================== */}}
+{{/* VARIANTA A: 3 Média (Video + 2 Fotky)      */}}
+{{/* ========================================== */}}
+{{ if and $imgTop $imgBot }}
+
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch mb-24 relative z-10">
+    <div class="rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative group w-full h-full min-h-[400px]">
+        <video src="{{ $video }}" class="w-full h-full object-cover absolute inset-0" autoplay loop muted playsinline></video>
+        <div class="absolute bottom-4 left-4 bg-black/50 backdrop-blur-md px-3 py-1 rounded-lg text-xs text-white uppercase tracking-widest border border-white/10 z-20">
+            Process
+        </div>
+    </div>
+
+    <div class="flex flex-col gap-6 h-full">
+        <div class="rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative group w-full aspect-video bg-[#2A2A2A]">
+            <img src="{{ $imgTop }}" class="w-full h-full object-{{ $topFit }} transform group-hover:scale-105 transition duration-1000 ease-out">
+            <div class="absolute bottom-4 left-4 bg-[#FF425C]/80 backdrop-blur-md px-3 py-1 rounded-lg text-xs text-white uppercase tracking-widest border border-white/10 pointer-events-none">
+                State BUSY
+            </div>
+        </div>
+        <div class="rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative group w-full aspect-video bg-[#2A2A2A]">
+            <img src="{{ $imgBot }}" class="w-full h-full object-{{ $botFit }} transform group-hover:scale-105 transition duration-1000 ease-out">
+            <div class="absolute bottom-4 left-4 bg-[#FF425C]/80 backdrop-blur-md px-3 py-1 rounded-lg text-xs text-white uppercase tracking-widest border border-white/10 pointer-events-none">
+                State FREE
+            </div>
+        </div>
+    </div>
+</div>
+
+{{/* ========================================== */}}
+{{/* VARIANTA B: 2 Média (Video + 1 Fotka)      */}}
+{{/* ========================================== */}}
+{{ else if $video }}
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-24 relative z-10">
+    <div class="rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative group w-full aspect-[3/4]">
+        <video src="{{ $video }}" class="w-full h-full object-cover" autoplay loop muted playsinline></video>
+        <div class="absolute bottom-4 left-4 bg-black/50 backdrop-blur-md px-3 py-1 rounded-lg text-xs text-white uppercase tracking-widest border border-white/10">
+            Process
+        </div>
+    </div>
+
+    <div class="rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative group w-full aspect-[3/4]">
+        <img src="{{ $image }}" alt="Final Result" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-1000 ease-out">
+        <div class="absolute bottom-4 left-4 bg-[#FF425C]/80 backdrop-blur-md px-3 py-1 rounded-lg text-xs text-white uppercase tracking-widest border border-white/10">
+            Result
+        </div>
+    </div>
+</div>
+
+{{/* ========================================== */}}
+{{/* VARIANTA C: 1 Médium (Pouze Velká Fotka)   */}}
+{{/* ========================================== */}}
+{{ else }}
+
+<div class="w-full max-w-5xl mx-auto mb-24 relative z-10 group">
+    <div class="rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative bg-[#2A2A2A]">
+        <img src="{{ $image }}" alt="Project Detail" class="w-full h-auto object-cover transform group-hover:scale-[1.02] transition duration-1000 ease-out">
+        
+        <div class="absolute bottom-6 left-6 bg-[#FF425C]/80 backdrop-blur-md px-4 py-2 rounded-xl text-sm text-white uppercase tracking-widest border border-white/10 shadow-lg">
+            Drawing Preview
+        </div>
+    </div>
+</div>
+
+{{ end }}
