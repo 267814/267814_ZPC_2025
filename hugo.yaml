@@ -1,0 +1,126 @@
+# ŠKOLNÍ ADRESA (S podadresářem)
+baseURL: 'https://267814.github.io/267814_ZPC_2025/'
+title: JH Portfolio (School)
+languageCode: en-us
+theme: tailbliss
+defaultContentLanguage: en
+
+# --- NASTAVENÍ PRO GITHUB PAGES (Aby fungovalo CSS) ---
+relativeURLs: true
+uglyURLs: true
+canonifyURLs: false
+trailingSlash: false
+
+# --- JAZYKY ---
+languages:
+  en:
+    languageName: EN
+    weight: 1
+  cs:
+    languageName: CZ
+    weight: 2
+  de:                 
+    languageName: DE
+    weight: 3
+
+enableEmoji: true
+enableGitInfo: false
+enableRobotsTXT: true
+pagination:
+  pagerSize: 9
+darkmode_js:
+  - assets/js/darkmode.js
+enableInlineShortcodes: true
+
+params:
+  author: Jan Hrnek
+  authorimage: /images/Ja1.jpg
+  og_image: /images/Ja1.jpg 
+  moto: "Digital Craft & Engineering"
+  description: "Jan Hrnek Portfolio"
+  
+  disable_theme_toggle: false
+  newsletter_signup: false 
+
+  social_media:
+    github:
+      enabled: true
+      url: 'https://github.com/267814/267814_ZPC_2025'
+    facebook:
+      enabled: false
+    instagram:
+      enabled: false
+    twitter:
+      enabled: false
+
+markup:
+  goldmark:
+    extensions:
+      definitionList: true
+      footnote: true
+      linkify: true
+      linkifyProtocol: https
+      strikethrough: true
+      table: true
+      taskList: true
+      typographer:
+        apostrophe: '&rsquo;'
+        disable: false
+        ellipsis: '&hellip;'
+        emDash: '&mdash;'
+        enDash: '&ndash;'
+        leftAngleQuote: '&laquo;'
+        leftDoubleQuote: '&ldquo;'
+        leftSingleQuote: '&lsquo;'
+        rightAngleQuote: '&raquo;'
+        rightDoubleQuote: '&rdquo;'
+        rightSingleQuote: '&rsquo;'
+    parser:
+      attribute:
+        block: false
+        title: true
+      autoHeadingID: true
+      autoHeadingIDType: github
+      wrapStandAloneImageWithinParagraph: true
+    renderer:
+      hardWraps: false
+      unsafe: true
+      xhtml: false
+
+menu:
+  main:
+    - identifier: about
+      name: About
+      url: /about/
+      weight: 10
+
+taxonomies:
+  category: Categories
+  tag: Tags
+
+module:
+  hugoVersion:
+    extended: true
+    min: "0.148.2"
+
+caches:
+  assets:
+    dir: :cacheDir/assets
+    maxAge: "0s"
+  getcsv:
+    dir: :cacheDir/getcsv
+    maxAge: 3600s
+  getjson:
+    dir: :cacheDir/getjson
+    maxAge: 3600s
+  images:
+    dir: :cacheDir/images
+    maxAge: 8760h
+  modules:
+    dir: :cacheDir/modules
+    maxAge: 8760h
+
+imaging:
+  quality: 85
+  resampleFilter: lanczos
+  anchor: smart

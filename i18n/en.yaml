@@ -1,0 +1,25 @@
+# NAVIGACE (Anglicky)
+nav_about: "About Me"
+nav_mini_projects: "Mini Projects"
+nav_main_project: "Main Project"
+nav_contact: "Contact"
+nav_home: "Home"
+nav_blog: "Blog"
+nav_resources: "Resources"
+
+# PATIČKA (Anglicky)
+footer_desc: "Creating innovative solutions through 3D scanning, printing, and coding."
+footer_work: "Let's work together!"
+footer_rights: "All rights reserved."
+menu_title: "Menu"
+explore_title: "Explore"
+
+# Tlačítka na About stránce
+btn_certificates_title: "Certificates"
+btn_certificates_sub: "View my achievements"
+
+btn_cv_title: "What I Do"
+btn_cv_sub: "Skills & Experience"
+
+btn_miniprojects_title: "Mini Projects"
+btn_miniprojects_sub: "View Collection"

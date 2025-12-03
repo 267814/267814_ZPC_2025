@@ -1,0 +1,173 @@
+{{ define "main" }}
+
+<style>
+  /* 1. IMPORT FONTU POPPINS */
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;0,900;1,700;1,900&display=swap');
+   
+  /* 2. GLOBÁLNÍ STYLY */
+  body, html {
+    font-family: 'Poppins', sans-serif !important;
+    background-color: #191E22 !important;
+    color: white !important;
+    margin: 0; padding: 0;
+    overflow-x: hidden;
+  }
+   
+  /* OPRAVA NAVIGACE A PATIČKY */
+  header, footer, #header, #footer { display: none !important; }
+  nav { display: none !important; }
+  #my-custom-nav { display: flex !important; }
+  #my-new-footer { display: block !important; }
+  .min-h-screen footer#my-new-footer { display: none !important; } 
+
+  /* Záře na pozadí */
+  .glow-effect {
+    position: absolute;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(125,125,125,0.4) 0%, rgba(25,30,34,0) 70%);
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    filter: blur(120px);
+    z-index: 0; 
+    pointer-events: none;
+    animation: pulseGlow 4s infinite alternate;
+  }
+
+  /* ANIMACE */
+  @keyframes slideUpFade { from { opacity: 0; transform: translateY(100px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
+  @keyframes slideInLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
+  @keyframes slideInRight { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
+  @keyframes pulseGlow { from { opacity: 0.5; transform: translateX(-50%) scale(1); } to { opacity: 0.8; transform: translateX(-50%) scale(1.1); } }
+  @keyframes charReveal { 0% { opacity: 0; transform: translateX(-5px) scale(1.2); filter: blur(5px); } 100% { opacity: 1; transform: translateX(0) scale(1); filter: blur(0); } }
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+  .char-span { display: inline-block; opacity: 0; animation: charReveal 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+  .cursor { display: inline-block; width: 3px; background-color: #FF425C; animation: blink 1s infinite; margin-left: 4px; vertical-align: middle; }
+  .animate-gearbox { animation: slideUpFade 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; opacity: 0; animation-delay: 0.2s; }
+  .animate-box-left { animation: slideInLeft 1s ease-out forwards; opacity: 0; animation-delay: 1.8s; }
+  .animate-box-right { animation: slideInRight 1s ease-out forwards; opacity: 0; animation-delay: 2.0s; }
+</style>
+
+<div class="min-h-screen bg-[#191E22] flex flex-col items-center w-full relative overflow-x-hidden">
+
+  <div class="glow-effect"></div>
+
+  <div class="w-full flex justify-center bg-[#191E22] fixed top-0 left-0 z-[99999] h-[80px]" style="pointer-events: auto;">
+    <nav id="my-custom-nav" class="w-full px-6 md:px-10 h-full max-w-[1440px] mx-auto relative flex items-center justify-between">
+      
+      <div class="hidden md:flex gap-8 text-sm font-bold uppercase tracking-wide flex-1">
+        <a href="{{ (site.GetPage "about").Permalink }}" class="text-gray-400 hover:text-white transition duration-300">{{ T "nav_about" }}</a>
+        <a href="{{ (site.GetPage "mini-projects").Permalink }}" class="text-gray-400 hover:text-white transition duration-300">{{ T "nav_mini_projects" }}</a>
+        <a href="{{ (site.GetPage "main-project").Permalink }}" class="text-gray-400 hover:text-white transition duration-300">{{ T "nav_main_project" }}</a>
+      </div>
+      
+      <a href="{{ site.Home.Permalink }}" class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xl md:text-2xl font-black tracking-widest uppercase text-white hover:scale-105 transition duration-300 whitespace-nowrap cursor-pointer">
+        JH PORTFOLIO
+      </a>
+      
+      <div class="hidden md:flex flex-1 justify-end items-center gap-6">
+         <div class="flex items-center gap-3 mr-2 border-r border-white/10 pr-6 h-8">
+            {{ if .IsTranslated }}
+                {{ range .AllTranslations }}
+                    <a href="{{ .Permalink }}" class="text-sm font-bold uppercase transition duration-300 {{ if eq .Language.Lang $.Language.Lang }}text-[#FF425C] pointer-events-none{{ else }}text-gray-400 hover:text-white{{ end }}">
+                        {{ .Language.LanguageName }}
+                    </a>
+                {{ end }}
+            {{ end }}
+         </div>
+
+         <a href="{{ .Site.Params.social_media.github.url }}" target="_blank" class="bg-[#2A2A2A] border border-white/10 text-white px-6 py-2 rounded-full font-bold hover:bg-[#FF425C] hover:border-[#FF425C] hover:text-white transition duration-300 flex items-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+            GitHub
+         </a>
+      </div>
+    </nav>
+  </div>
+
+  <div class="w-full flex flex-col items-center justify-start pt-28 px-4 pb-10 relative z-10">
+    
+    <div class="relative z-0 flex flex-col items-center pointer-events-none px-4 pr-12 max-w-[1440px] mx-auto mb-[-60px] md:mb-[-120px]">
+        <h1 id="typewriter-1" class="text-[50px] md:text-[128px] italic font-bold leading-[1.2] tracking-tighter text-gray-200 uppercase drop-shadow-2xl min-h-[1.2em] pr-6"></h1>
+        <h1 id="typewriter-2" class="text-[50px] md:text-[128px] italic font-bold leading-[1.2] tracking-tighter text-white uppercase mt-[-10px] md:mt-[-30px] drop-shadow-2xl min-h-[1.2em] pr-6"></h1>
+    </div>
+
+    <div class="relative w-full max-w-[1600px] mx-auto flex justify-center">
+
+        <div class="hidden md:flex flex-col items-start text-left absolute left-0 top-[20%] z-30 max-w-[350px] animate-box-left">
+            <div class="bg-[#2A2A2A]/60 backdrop-blur-md border border-white/10 p-6 rounded-2xl shadow-2xl transition hover:bg-[#2A2A2A]/80">
+                <h3 class="text-white font-bold text-2xl mb-3 text-[#FF425C]">{{ .Params.welcome_title }}</h3>
+                <p class="text-gray-300 text-sm leading-relaxed">{{ .Params.welcome_text }}</p>
+            </div>
+            <div class="w-24 h-px bg-gradient-to-r from-[#FF425C] to-transparent mt-4 ml-4"></div>
+        </div>
+
+        <div class="hidden md:flex flex-col items-end text-right absolute right-0 top-[45%] z-30 max-w-[350px] animate-box-right">
+             <div class="bg-[#2A2A2A]/60 backdrop-blur-md border border-white/10 p-6 rounded-2xl shadow-2xl transition hover:bg-[#2A2A2A]/80">
+                <h3 class="text-white font-bold text-2xl mb-3 text-[#FF425C]">{{ .Params.what_do_title }}</h3>
+                <p class="text-gray-300 text-sm leading-relaxed">{{ .Params.what_do_text }}</p>
+            </div>
+            <div class="w-24 h-px bg-gradient-to-l from-[#FF425C] to-transparent mt-4 mr-4"></div>
+        </div>
+
+        <img src="{{ "images/Prevodovka-render.png" | relURL }}" 
+             alt="Gearbox" 
+             class="w-full object-contain relative z-20 top-4 hover:scale-[1.01] transition-transform duration-700 animate-gearbox">
+       
+    </div>
+  </div>
+
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const text1 = "{{ .Params.typewriter_line1 }}";
+    const text2Part1 = "{{ .Params.typewriter_line2_part1 }}";
+    const text2Part2 = "{{ .Params.typewriter_line2_part2 }}";
+    const element1 = document.getElementById('typewriter-1');
+    const element2 = document.getElementById('typewriter-2');
+    function getHumanDelay() { return Math.floor(Math.random() * 80) + 40; }
+    function appendChar(element, char, isColor = false) {
+        const span = document.createElement('span');
+        span.textContent = char === ' ' ? '\u00A0' : char;
+        span.className = 'char-span'; 
+        if (isColor) span.classList.add('text-[#FF425C]');
+        const cursor = element.querySelector('.cursor');
+        if (cursor) { element.insertBefore(span, cursor); } else { element.appendChild(span); }
+    }
+    let i = 0;
+    if (text1) {
+        element1.innerHTML = '<span class="cursor">|</span>';
+        setTimeout(typeLine1, 300);
+    }
+    function typeLine1() {
+      if (i < text1.length) {
+        appendChar(element1, text1[i]);
+        i++;
+        setTimeout(typeLine1, getHumanDelay());
+      } else {
+        const cursor = element1.querySelector('.cursor');
+        if (cursor) cursor.remove();
+        element2.innerHTML = '<span class="cursor">|</span>';
+        setTimeout(typeLine2, 200); 
+      }
+    }
+    let j = 0;
+    const fullText2 = text2Part1 + text2Part2;
+    function typeLine2() {
+        if (j < fullText2.length) {
+            const char = fullText2[j];
+            const isColor = j < text2Part1.length;
+            appendChar(element2, char, isColor);
+            j++;
+            setTimeout(typeLine2, getHumanDelay());
+        } else {
+            const cursor = element2.querySelector('.cursor');
+            if (cursor) cursor.remove();
+        }
+    }
+  });
+</script>
+
+{{ end }}
