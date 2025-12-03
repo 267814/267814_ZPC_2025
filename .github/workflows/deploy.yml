@@ -1,9 +1,10 @@
-name: Deploy School Version to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -16,30 +17,38 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          submodules: recursive  # DŮLEŽITÉ: Stáhne i šablonu, pokud je jako submodule
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: Install pnpm
-        run: npm install -g pnpm
+      # 1. Zkusíme zjistit, jestli tam ta šablona fyzicky je
+      - name: Check Theme Folder
+        run: |
+          if [ ! -d "themes/tailbliss" ]; then
+            echo "Theme folder missing! Cloning it manually..."
+            git clone https://github.com/nusserstudios/tailbliss.git themes/tailbliss
+          fi
+
+      - name: Install Dependencies
+        run: npm install
+        working-directory: themes/tailbliss
+
+      - name: Build CSS (Tailwind)
+        run: npm run build
+        working-directory: themes/tailbliss
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.148.2'
+          hugo-version: '0.119.0' # Použijeme stabilní verzi
           extended: true
 
-      - name: Install TailBliss deps
-        run: pnpm install
-        working-directory: themes/tailbliss
-
-      - name: Build TailBliss assets
-        run: pnpm run build
-        working-directory: themes/tailbliss
-
-      - name: Build Hugo site
+      - name: Build Site
         run: hugo --minify
 
       - name: Upload artifact
@@ -48,8 +57,12 @@ jobs:
           path: ./public
 
   deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
     steps:
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4

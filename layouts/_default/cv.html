@@ -1,26 +1,80 @@
 {{ define "main" }}
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;0,900;1,700;1,900&display=swap');
-  html, body { width: 100%; height: auto !important; min-height: 100vh; margin: 0; padding: 0; overflow-x: hidden !important; overflow-y: auto !important; background-color: #191E22 !important; color: white; font-family: 'Poppins', sans-serif !important; }
-  header, #header, nav, .header { display: none !important; }
-  #my-custom-nav { display: flex !important; }
-  .bento-wrapper { max-width: 1200px; margin: 0 auto; padding: 140px 24px 80px 24px; display: grid; grid-template-columns: 1fr; gap: 24px; }
-  @media (min-width: 1024px) { .bento-wrapper { grid-template-columns: repeat(3, 1fr); grid-auto-rows: minmax(min-content, max-content); } .col-span-2 { grid-column: span 2; } .col-span-3 { grid-column: span 3; } .row-span-2 { grid-row: span 2; } }
-  .bento-card { background: #2A2A2A; border: 1px solid rgba(255,255,255,0.05); border-radius: 28px; padding: 32px; transition: transform 0.3s ease, border-color 0.3s ease; display: flex; flex-direction: column; }
+  
+  /* 1. GLOBÁLNÍ RESET POZADÍ - Přepíše všechna pozadí šablony */
+  html, body { 
+      width: 100%; 
+      height: 100% !important; 
+      margin: 0; 
+      padding: 0; 
+      overflow-x: hidden !important; 
+      /* Používám 'background' místo 'background-color', aby to přepsalo i obrázky/gradienty */
+      background: #191E22 !important; 
+      color: white; 
+      font-family: 'Poppins', sans-serif !important; 
+  }
+
+  /* 2. SKRYTÍ STARÝCH PRVKŮ */
+  /* Skryje původní hlavičky */
+  header, #header, .header { display: none !important; }
+  
+  /* DŮLEŽITÉ: Skryje jakoukoliv jinou navigaci, která není ta naše ('my-custom-nav') */
+  /* Toto odstraní ten starý fialový panel */
+  nav:not(#my-custom-nav) { display: none !important; }
+  
+  /* Pojistka: Pokud je někde natvrdo třída s tou fialovou barvou, přebarvíme ji */
+  .bg-\[\#4F3EF1\] { background-color: #191E22 !important; }
+
+  /* 3. NASTAVENÍ NAŠÍ NOVÉ NAVIGACE */
+  #my-custom-nav { display: flex !important; visibility: visible !important; }
+
+  /* Wrapper */
+  .bento-wrapper { 
+      width: 100%;
+      min-height: 100vh;
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      padding: 80px 20px 20px 20px;
+      box-sizing: border-box;
+  }
+
+  /* Karta */
+  .bento-card { 
+      background: #2A2A2A; 
+      border: 1px solid rgba(255,255,255,0.05); 
+      border-radius: 28px; 
+      padding: 48px 32px; 
+      transition: transform 0.3s ease, border-color 0.3s ease; 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      text-align: center;
+      max-width: 600px; 
+      width: 100%;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  }
+
   .bento-card:hover { border-color: rgba(255, 66, 92, 0.3); transform: translateY(-2px); }
-  .glow-effect { position: fixed; top: 0; left: 50%; transform: translateX(-50%); width: 900px; height: 900px; background: radial-gradient(circle, rgba(255, 66, 92, 0.08) 0%, rgba(25,30,34,0) 70%); filter: blur(120px); z-index: -1; pointer-events: none; }
+  
+  .glow-effect { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 800px; height: 800px; background: radial-gradient(circle, rgba(255, 66, 92, 0.08) 0%, rgba(25,30,34,0) 70%); filter: blur(120px); z-index: -1; pointer-events: none; }
+  
   .floating-back-btn { position: fixed; top: 100px; left: 40px; z-index: 50; backdrop-filter: blur(10px); background: rgba(42, 42, 42, 0.5); border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease; }
   .floating-back-btn:hover { background: rgba(255, 66, 92, 0.1); border-color: #FF425C; transform: translateX(-5px); }
-  @media (max-width: 768px) { .floating-back-btn { top: 90px; left: 20px; padding: 8px 16px; font-size: 12px; } .bento-wrapper { padding-top: 120px; } }
+  
+  @media (max-width: 768px) { .floating-back-btn { top: 90px; left: 20px; padding: 8px 16px; font-size: 12px; } }
+  
   @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
   .animate-in { animation: fadeUp 0.6s ease-out forwards; opacity: 0; }
 </style>
 
 <div class="glow-effect"></div>
 
-<div class="w-full flex justify-center bg-[#191E22]/90 backdrop-blur-md fixed top-0 left-0 z-[99999] h-[80px] border-b border-white/5">
-    <nav id="my-custom-nav" class="w-full px-6 md:px-10 h-full max-w-[1440px] mx-auto relative flex items-center justify-between">
-      <div class="hidden md:flex gap-8 text-sm font-bold uppercase tracking-wide flex-1">
+<div class="w-full fixed top-0 left-0 z-[99999] h-[80px] bg-[#191E22] border-b border-white/5">
+    <nav id="my-custom-nav" class="w-full h-full max-w-[1440px] mx-auto px-6 md:px-10 relative flex items-center">
+      
+      <div class="hidden md:flex items-center gap-8 text-sm font-bold uppercase tracking-wide mr-auto">
         <a href="{{ (site.GetPage "about").Permalink }}" class="text-white transition duration-300">{{ T "nav_about" }}</a>
         <a href="{{ (site.GetPage "mini-projects").Permalink }}" class="text-gray-400 hover:text-white transition duration-300">{{ T "nav_mini_projects" }}</a>
         <a href="{{ (site.GetPage "main-project").Permalink }}" class="text-gray-400 hover:text-white transition duration-300">{{ T "nav_main_project" }}</a>
@@ -30,9 +84,15 @@
         JH PORTFOLIO
       </a>
       
-      <div class="hidden md:flex flex-1 justify-end items-center gap-6">
+      <div class="hidden md:flex items-center justify-end gap-6 ml-auto">
             <div class="flex items-center gap-3 mr-2 border-r border-white/10 pr-6 h-8">
-            {{ if .IsTranslated }}{{ range .AllTranslations }}<a href="{{ .Permalink }}" class="text-sm font-bold uppercase transition duration-300 {{ if eq .Language.Lang $.Language.Lang }}text-[#FF425C] pointer-events-none{{ else }}text-gray-400 hover:text-white{{ end }}">{{ .Language.LanguageName }}</a>{{ end }}{{ end }}
+            {{ if .IsTranslated }}
+                {{ range .AllTranslations }}
+                    <a href="{{ .Permalink }}" class="text-sm font-bold uppercase transition duration-300 {{ if eq .Language.Lang $.Language.Lang }}text-[#FF425C] pointer-events-none{{ else }}text-gray-400 hover:text-white{{ end }}">
+                        {{ .Language.LanguageName }}
+                    </a>
+                {{ end }}
+            {{ end }}
             </div>
             
             <a href="{{ .Site.Params.social_media.github.url }}" target="_blank" class="bg-[#2A2A2A] border border-white/10 text-white px-6 py-2 rounded-full font-bold hover:bg-[#FF425C] hover:border-[#FF425C] hover:text-white transition duration-300 flex items-center gap-2">
@@ -45,102 +105,61 @@
 
 <a href="{{ (site.GetPage "about").Permalink }}" class="floating-back-btn rounded-full px-6 py-3 text-white font-bold uppercase tracking-wider text-sm flex items-center gap-2">
     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-    <span class="hidden md:inline">{{ if eq .Language.Lang "cs" }}Zpět{{ else if eq .Language.Lang "de" }}Zurück{{ else }}Back{{ end }}</span>
+    <span class="hidden md:inline">
+        {{ if eq .Language.Lang "cs" }}Zpět
+        {{ else if eq .Language.Lang "de" }}Zurück
+        {{ else }}Back
+        {{ end }}
+    </span>
 </a>
-
 
 <div class="bento-wrapper">
 
-    <div class="col-span-3 text-center mb-8 animate-in" style="animation-delay: 0s;">
-        <h1 class="text-4xl md:text-7xl font-bold text-white mb-4 uppercase tracking-tight">{{ .Title }}</h1>
-        <div class="w-24 h-1 bg-[#FF425C] mx-auto rounded-full"></div>
-    </div>
-
-    <div class="bento-card animate-in items-center text-center" style="animation-delay: 0.1s;">
-        <div class="w-40 h-40 rounded-full overflow-hidden border-4 border-[#2A2A2A] shadow-xl mb-6 ring-2 ring-white/5">
-            <img src="{{ .Params.profile_image | strings.TrimPrefix "/" | relURL }}" class="w-full h-full object-cover">
-        </div>
-        <h2 class="text-2xl font-bold text-white">{{ .Params.name }}</h2>
-        <p class="text-[#FF425C] font-bold text-sm uppercase tracking-widest mb-4">{{ .Params.role }}</p>
-        <p class="text-gray-400 text-sm leading-relaxed">{{ .Params.bio }}</p>
-    </div>
-
-    <div class="bento-card col-span-2 animate-in" style="animation-delay: 0.2s;">
+    <div class="bento-card animate-in">
         
-        <div class="mb-8">
-            <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-[#FF425C]"></span> Hard Skills
-            </h3>
-            <div class="flex flex-wrap gap-2">
-                {{ range .Params.hard_skills }}
-                <span class="bg-white/5 border border-white/10 px-4 py-2 rounded-lg text-sm text-gray-300 font-medium hover:bg-white/10 transition">{{ . }}</span>
-                {{ end }}
-            </div>
-        </div>
-        
-        <div class="mb-8">
-            <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-[#FF425C]"></span> Software
-            </h3>
-            <div class="flex flex-wrap gap-2">
-                {{ range .Params.software }}
-                <span class="bg-[#FF425C]/10 border border-[#FF425C]/20 px-4 py-2 rounded-lg text-sm text-[#FF425C] font-bold hover:bg-[#FF425C]/20 transition">{{ . }}</span>
-                {{ end }}
-            </div>
+        <div class="mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#FF425C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                <circle cx="12" cy="16.5" r="1" fill="#FF425C"></circle>
+                <path d="M12 16.5V18.5"></path>
+            </svg>
         </div>
 
-        <div>
-            <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-[#FF425C]"></span> Languages
-            </h3>
-            <div class="flex flex-wrap gap-2">
-                {{ range .Params.languages }}
-                <span class="bg-white/5 border border-white/10 px-4 py-2 rounded-lg text-sm text-gray-300 font-medium hover:bg-white/10 transition">{{ . }}</span>
-                {{ end }}
-            </div>
-        </div>
-
-    </div>
-
-    <div class="bento-card col-span-2 animate-in" style="animation-delay: 0.3s;">
-        <h3 class="text-2xl font-bold text-white mb-8 flex items-center gap-3">
-            <svg class="w-6 h-6 text-[#FF425C]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-            Experience
-        </h3>
-        
-        <div class="space-y-8 border-l-2 border-white/5 ml-3 pl-8 relative">
-            {{ range .Params.experience }}
-            <div class="relative group">
-                <div class="absolute -left-[41px] top-1 w-5 h-5 rounded-full bg-[#2A2A2A] border-4 border-[#FF425C] transition group-hover:scale-110"></div>
-                <h4 class="text-xl font-bold text-white">{{ .title }}</h4>
-                <div class="flex justify-between items-center mt-1 mb-2">
-                    <span class="text-[#FF425C] text-sm font-bold uppercase">{{ .company }}</span>
-                    <span class="text-gray-500 text-xs bg-white/5 px-2 py-1 rounded">{{ .date }}</span>
-                </div>
-                <p class="text-gray-400 text-sm leading-relaxed">{{ .desc }}</p>
-            </div>
+        <h1 class="text-3xl font-bold text-white mb-2">
+            {{ if eq .Language.Lang "cs" }}Životopis
+            {{ else if eq .Language.Lang "de" }}Lebenslauf
+            {{ else }}Curriculum Vitae
             {{ end }}
-        </div>
-    </div>
-
-    <div class="bento-card animate-in" style="animation-delay: 0.4s;">
-        <h3 class="text-2xl font-bold text-white mb-8 flex items-center gap-3">
-            <svg class="w-6 h-6 text-[#FF425C]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path></svg>
-            Education
-        </h3>
+        </h1>
         
-        <div class="space-y-8 border-l-2 border-white/5 ml-3 pl-8 relative">
-            {{ range .Params.education }}
-            <div class="relative group">
-                <div class="absolute -left-[41px] top-1 w-5 h-5 rounded-full bg-[#2A2A2A] border-4 border-white transition group-hover:border-[#FF425C]"></div>
-                <h4 class="text-lg font-bold text-white">{{ .school }}</h4>
-                <div class="flex flex-col mt-1">
-                    <span class="text-gray-300 text-sm">{{ .degree }}</span>
-                    <span class="text-gray-500 text-xs mt-1">{{ .date }}</span>
-                </div>
-            </div>
+        <h2 class="text-xl font-bold text-white mb-8">
+            {{ if eq .Language.Lang "cs" }}Dostupné na vyžádání
+            {{ else if eq .Language.Lang "de" }}Auf Anfrage verfügbar
+            {{ else }}Available Upon Request
             {{ end }}
-        </div>
+        </h2>
+        
+        <p class="text-gray-400 text-center leading-relaxed mb-4">
+            {{ if eq .Language.Lang "cs" }}
+                Z důvodu ochrany soukromí není plná verze životopisu v tomto veřejném repozitáři zobrazena.
+            {{ else if eq .Language.Lang "de" }}
+                Aus Datenschutzgründen wird der vollständige Lebenslauf in diesem öffentlichen Repository nicht angezeigt.
+            {{ else }}
+                For privacy reasons, the full Curriculum Vitae is not displayed in this public repository.
+            {{ end }}
+        </p>
+        
+        <p class="text-gray-400 text-center leading-relaxed">
+            {{ if eq .Language.Lang "cs" }}
+                Je k dispozici v privátní verzi tohoto projektu nebo přímo na vyžádání.
+            {{ else if eq .Language.Lang "de" }}
+                Er ist in der privaten Version dieses Projekts oder auf Anfrage erhältlich.
+            {{ else }}
+                It is available in the private version of this project or upon request.
+            {{ end }}
+        </p>
+
     </div>
 
 </div>

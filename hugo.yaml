@@ -5,9 +5,10 @@ theme: tailbliss
 defaultContentLanguage: en
 
 # --- ZÁCHRANNÉ NASTAVENÍ PRO GITHUB PAGES ---
-relativeURLs: true
+# TOTO BYLO ROZBITÉ: relativeURLs musí být false, aby fungovaly styly všude!
+relativeURLs: false
 uglyURLs: true
-canonifyURLs: false
+canonifyURLs: true
 trailingSlash: false
 
 # --- JAZYKY ---
@@ -22,13 +23,12 @@ languages:
     languageName: DE
     weight: 3
 
-# --- MENU (NATVRDO S .html) ---
-# Tímto zajistíme, že odkazy povedou na existující soubory
+# --- MENU ---
 menu:
   main:
     - identifier: about
       name: About
-      url: about.html        # Žádné lomítko na začátku!
+      url: about.html
       weight: 10
     - identifier: miniprojects
       name: Mini Projects
