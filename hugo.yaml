@@ -1,16 +1,18 @@
-baseURL: 'https://267814.github.io/267814_ZPC_2025/'
+# Netlify si doménu doplní samo, '/' je univerzální a bezpečné
+baseURL: '/'
 title: JH Portfolio
 languageCode: en-us
 theme: tailbliss
 defaultContentLanguage: en
 
-# --- DŮLEŽITÁ ZMĚNA ---
-# Vypínáme relativeURLs, aby Hugo generoval absolutní cesty od kořene projektu
-# Díky tomu a funkcím | relURL v šablonách to pojede všude.
+# --- ČISTÉ NASTAVENÍ PRO NETLIFY ---
+# Všechno vypneme, chceme standardní chování
 relativeURLs: false
-uglyURLs: false 
-# ----------------------
+uglyURLs: false
+canonifyURLs: false
+trailingSlash: false
 
+# --- JAZYKY ---
 languages:
   en:
     languageName: EN
@@ -25,7 +27,6 @@ languages:
 enableEmoji: true
 enableGitInfo: false
 enableRobotsTXT: true
-canonifyURLs: false
 pagination:
   pagerSize: 9
 darkmode_js:
