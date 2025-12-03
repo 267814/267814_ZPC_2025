@@ -5,9 +5,9 @@ theme: tailbliss
 defaultContentLanguage: en
 
 # --- ZÁCHRANNÉ NASTAVENÍ PRO GITHUB PAGES ---
-relativeURLs: true      # Zajistí, že se načtou styly i v podadresáři
-uglyURLs: true          # Vytvoří soubory about.html místo složky about/
-canonifyURLs: false     
+relativeURLs: true
+uglyURLs: true
+canonifyURLs: false
 trailingSlash: false
 
 # --- JAZYKY ---
@@ -21,6 +21,23 @@ languages:
   de:                 
     languageName: DE
     weight: 3
+
+# --- MENU (NATVRDO S .html) ---
+# Tímto zajistíme, že odkazy povedou na existující soubory
+menu:
+  main:
+    - identifier: about
+      name: About
+      url: about.html        # Žádné lomítko na začátku!
+      weight: 10
+    - identifier: miniprojects
+      name: Mini Projects
+      url: mini-projects.html
+      weight: 20
+    - identifier: mainproject
+      name: Main Project
+      url: main-project.html
+      weight: 30
 
 enableEmoji: true
 enableGitInfo: false
@@ -53,24 +70,8 @@ params:
     twitter:
       enabled: false
 
-# --- TECHNICKÉ NASTAVENÍ ---
+# --- MARKUP ---
 markup:
   goldmark:
     renderer:
       unsafe: true
-
-# --- MENU (S PŘIDANÝM .HTML) ---
-menu:
-  main:
-    - identifier: about
-      name: About
-      url: /about.html
-      weight: 10
-    - identifier: miniprojects
-      name: Mini Projects
-      url: /mini-projects.html
-      weight: 20
-    - identifier: mainproject
-      name: Main Project
-      url: /main-project.html
-      weight: 30
