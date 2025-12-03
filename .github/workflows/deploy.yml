@@ -18,7 +18,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          submodules: recursive  # DŮLEŽITÉ: Stáhne i šablonu, pokud je jako submodule
+          submodules: recursive
           fetch-depth: 0
 
       - name: Setup Node.js
@@ -26,7 +26,16 @@ jobs:
         with:
           node-version: 20
 
-      # 1. Zkusíme zjistit, jestli tam ta šablona fyzicky je
+      # --- ZMĚNA: POSUNUL JSEM INSTALACI HUGA SEM ---
+      # Musí být nainstalovaný PŘEDTÍM, než se spustí 'npm run build',
+      # protože ten build příkaz ho volá.
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.119.0'
+          extended: true
+      # ----------------------------------------------
+
       - name: Check Theme Folder
         run: |
           if [ ! -d "themes/tailbliss" ]; then
@@ -42,11 +51,7 @@ jobs:
         run: npm run build
         working-directory: themes/tailbliss
 
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
-        with:
-          hugo-version: '0.119.0' # Použijeme stabilní verzi
-          extended: true
+      # Zde už Setup Hugo nepotřebujeme, je nahoře.
 
       - name: Build Site
         run: hugo --minify
