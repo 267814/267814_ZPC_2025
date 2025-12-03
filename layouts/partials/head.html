@@ -1,67 +1,18 @@
-<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
 
-<link rel="apple-touch-icon" sizes="180x180" href="{{ "/favicon/apple-touch-icon.png" | relURL }}">
-<link rel="icon" type="image/png" sizes="32x32" href="{{ "/favicon/favicon-32x32.png" | relURL }}">
-<link rel="icon" type="image/png" sizes="16x16" href="{{ "/favicon/favicon-16x16.png" | relURL }}">
-<link rel="manifest" href="{{ "/favicon/site.webmanifest" | relURL }}">
-<link rel="mask-icon" href="{{ "/favicon/safari-pinned-tab.svg" | relURL }}" color="#5bbad5">
+<link rel="icon" type="image/png" href="{{ "favicon/favicon-32x32.png" | relURL }}">
 
-<meta name="msapplication-TileColor" content="#da532c">
-<meta name="theme-color" content="#ffffff">
-{{ partial "meta" . }}
-
-<link href="//cdn.jsdelivr.net" rel="dns-prefetch">
-<link href="https://cdn.jsdelivr.net" rel="preconnect" crossorigin="anonymous">
-<link href="https://static.cloudflareinsights.com" rel="preconnect" rel="dns-prefetch">
-<link href="https://static.cloudflareinsights.com" crossorigin="anonymous" rel="preconnect">
-
-{{/* Preload critical hero image - OPRAVA CESTY */}}
-{{ if .IsHome }}
-{{ $heroImage := resources.Get "images/pages/tailbliss-rocket-indigo.png" }}
-{{ if $heroImage }}
-    {{ $heroWebP := $heroImage.Resize "576x576 webp q85" }}
-    <link href="{{ $heroWebP.RelPermalink }}" rel="preload" as="image" fetchpriority="high" loading="eager">
-{{ else }}
-    <link as="image" href="{{ "/images/tailbliss-rocket-indigo.webp" | relURL }}" rel="preload" fetchpriority="high" loading="eager">
-{{ end }}
-{{ end }}
-
-<link href="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js" as="script" rel="preconnect" rel="dns-prefetch">
-
-<style>
-  [x-cloak] { display: none !important; }
-</style>
-
-<script>
-  if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    document.documentElement.classList.add('dark');
-  } else {
-    document.documentElement.classList.remove('dark')
-  }
-</script>
-
-{{/* UNIVERZÁLNÍ NAČÍTÁNÍ CSS (Oprava pro Hugo 0.148+) */}}
 {{ $styles := resources.Get "css/main.css" }}
-
 {{ if $styles }}
-  {{/* Pokud Hugo najde zdrojový CSS soubor v assets/css/main.css */}}
+  {{ $styles = $styles | postCSS }}
   {{ if hugo.IsProduction }}
-    {{/* Pro GitHub: Použijeme css.PostCSS místo resources.PostCSS */}}
-    {{ $styles := $styles | css.PostCSS | minify | fingerprint }}
-    <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
-  {{ else }}
-    {{/* Pro Localhost: Použijeme css.PostCSS */}}
-    {{ $styles := $styles | css.PostCSS }}
-    <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
+    {{ $styles = $styles | minify | fingerprint }}
   {{ end }}
-{{ else }}
-  {{/* ZÁLOŽNÍ PLÁN: Kdyby resources.Get selhalo, zkusíme najít hotový soubor v public/static */}}
-  {{ $cssFiles := readDir "themes/tailbliss/static/css" }}
-  {{ range $cssFiles }}
-      {{ if and (strings.Contains .Name "main.") (strings.HasSuffix .Name ".css") }}
-          <link rel="stylesheet" href="{{ (printf "css/%s" .Name) | relURL }}">
-      {{ end }}
-  {{ end }}
+  <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
 {{ end }}
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
+
+{{ partial "meta" . }}

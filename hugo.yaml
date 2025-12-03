@@ -1,14 +1,13 @@
-# ŠKOLNÍ ADRESA (S podadresářem)
 baseURL: 'https://267814.github.io/267814_ZPC_2025/'
-title: JH Portfolio (School)
+title: JH Portfolio
 languageCode: en-us
 theme: tailbliss
 defaultContentLanguage: en
 
-# --- NASTAVENÍ PRO GITHUB PAGES (Aby fungovalo CSS) ---
-relativeURLs: true
-uglyURLs: true
-canonifyURLs: false
+# --- ZÁCHRANNÉ NASTAVENÍ PRO GITHUB PAGES ---
+relativeURLs: true      # Zajistí, že se načtou styly i v podadresáři
+uglyURLs: true          # Vytvoří soubory about.html místo složky about/
+canonifyURLs: false     
 trailingSlash: false
 
 # --- JAZYKY ---
@@ -32,6 +31,7 @@ darkmode_js:
   - assets/js/darkmode.js
 enableInlineShortcodes: true
 
+# --- PARAMETRY ---
 params:
   author: Jan Hrnek
   authorimage: /images/Ja1.jpg
@@ -53,74 +53,24 @@ params:
     twitter:
       enabled: false
 
+# --- TECHNICKÉ NASTAVENÍ ---
 markup:
   goldmark:
-    extensions:
-      definitionList: true
-      footnote: true
-      linkify: true
-      linkifyProtocol: https
-      strikethrough: true
-      table: true
-      taskList: true
-      typographer:
-        apostrophe: '&rsquo;'
-        disable: false
-        ellipsis: '&hellip;'
-        emDash: '&mdash;'
-        enDash: '&ndash;'
-        leftAngleQuote: '&laquo;'
-        leftDoubleQuote: '&ldquo;'
-        leftSingleQuote: '&lsquo;'
-        rightAngleQuote: '&raquo;'
-        rightDoubleQuote: '&rdquo;'
-        rightSingleQuote: '&rsquo;'
-    parser:
-      attribute:
-        block: false
-        title: true
-      autoHeadingID: true
-      autoHeadingIDType: github
-      wrapStandAloneImageWithinParagraph: true
     renderer:
-      hardWraps: false
       unsafe: true
-      xhtml: false
 
+# --- MENU (S PŘIDANÝM .HTML) ---
 menu:
   main:
     - identifier: about
       name: About
-      url: /about/
+      url: /about.html
       weight: 10
-
-taxonomies:
-  category: Categories
-  tag: Tags
-
-module:
-  hugoVersion:
-    extended: true
-    min: "0.148.2"
-
-caches:
-  assets:
-    dir: :cacheDir/assets
-    maxAge: "0s"
-  getcsv:
-    dir: :cacheDir/getcsv
-    maxAge: 3600s
-  getjson:
-    dir: :cacheDir/getjson
-    maxAge: 3600s
-  images:
-    dir: :cacheDir/images
-    maxAge: 8760h
-  modules:
-    dir: :cacheDir/modules
-    maxAge: 8760h
-
-imaging:
-  quality: 85
-  resampleFilter: lanczos
-  anchor: smart
+    - identifier: miniprojects
+      name: Mini Projects
+      url: /mini-projects.html
+      weight: 20
+    - identifier: mainproject
+      name: Main Project
+      url: /main-project.html
+      weight: 30
