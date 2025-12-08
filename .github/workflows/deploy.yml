@@ -30,7 +30,7 @@ jobs:
       # Musí být nainstalovaný PŘEDTÍM, než se spustí 'npm run build',
       # protože ten build příkaz ho volá.
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
+        uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: 'latest' # ZMĚNA: Použijeme nejnovější verzi
           extended: true
