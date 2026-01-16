@@ -1,0 +1,28 @@
+<div class="project-card md:col-span-1 flex flex-col h-full cursor-pointer group relative aspect-[3/4]"  
+     data-img="{{ with .Get "full_image" }}{{ . | absURL }}{{ else }}{{ .Get "image" | absURL }}{{ end }}"  
+     data-title="{{ .Get "title" }}"
+     data-desc="{{ .Get "full_desc" | default (.Get "desc") | htmlEscape }}"
+     @click="modalOpen = true; 
+             activeSketch = { 
+                src: $el.getAttribute('data-img'), 
+                title: $el.getAttribute('data-title'), 
+                desc: $el.getAttribute('data-desc') 
+             }">
+    
+    <div class="absolute inset-0">
+        <img src="{{ .Get "image" | absURL }}" 
+             alt="{{ .Get "title" }}" 
+             class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100">
+        
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+    </div>
+    
+    <div class="absolute bottom-0 left-0 p-8 w-full z-10">
+        <h3 class="text-2xl font-bold text-white mb-2 drop-shadow-md group-hover:text-[#FF425C] transition">{{ .Get "title" }}</h3>
+        <p class="text-gray-200 text-sm drop-shadow-md line-clamp-3">{{ .Get "desc" }}</p>
+        
+        <div class="mt-4 text-xs font-bold uppercase tracking-widest text-[#FF425C] opacity-0 transform translate-y-4 group-hover:translate-y-0 group-hover:opacity-100 transition duration-300">
+            Rozkliknout ↗
+        </div>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="w-full mb-24">
+    
+    {{ if .Get "title" }}
+    <h3 class="text-2xl font-bold text-white mb-6 pl-4 border-l-4 border-[#FF425C]">
+        {{ .Get "title" }}
+    </h3>
+    {{ end }}
+
+    <div class="w-full h-[500px] md:h-[700px] bg-[#2A2A2A] rounded-3xl border border-white/10 shadow-2xl overflow-hidden relative group">
+        
+        <model-viewer 
+            src="{{ (.Get "src") | strings.TrimPrefix "/" | relURL }}" 
+            alt="{{ .Get "title" }}"
+            camera-controls
+            touch-action="pan-y"
+            auto-rotate
+            auto-rotate-delay="1000"
+            rotation-per-second="30deg"
+            
+            environment-image="neutral"
+            exposure="1.2"
+            shadow-intensity="1.5"
+            shadow-softness="0.8"
+
+            style="width: 100%; height: 100%; background: linear-gradient(135deg, #2A2A2A 0%, #1a1a1a 100%);"
+        >
+            <div slot="progress-bar" style="background: linear-gradient(90deg, #FF425C 0%, #ff6b7a 100%); height: 4px; width: 100%; border-radius: 2px;"></div>
+        </model-viewer>
+
+        <!-- Interactive Badge -->
+        <div class="absolute bottom-6 right-6 bg-black/60 backdrop-blur-md px-4 py-2 rounded-full text-xs text-white uppercase tracking-widest border border-white/20 pointer-events-none">
+            3D Interactive
+        </div>
+
+        <!-- Hover Instruction -->
+        <div class="absolute top-6 left-6 bg-[#FF425C]/90 backdrop-blur-md px-4 py-2 rounded-full text-xs text-white font-bold uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+            Drag to Rotate
+        </div>
+
+    </div>
+    
+    {{ if .Inner }}
+    <p class="text-gray-400 text-sm mt-4 text-center leading-relaxed">
+        {{ .Inner | markdownify }}
+    </p>
+    {{ end }}
+
+</div>
+
+<style>
+model-viewer {
+    display: block;
+    border-radius: 1.5rem;
+}
+</style>

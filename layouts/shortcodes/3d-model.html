@@ -1,17 +1,17 @@
 <div class="w-full mb-24">
     
-    {{ if .Params.title }}
+    {{ if .Get "title" }}
     <h3 class="text-2xl font-bold text-white mb-6 pl-4 border-l-4 border-[#FF425C]">
-        {{ .Params.title }}
+        {{ .Get "title" }}
     </h3>
     {{ end }}
 
     <div class="w-full h-[500px] md:h-[600px] bg-[#2A2A2A] rounded-3xl border border-white/10 shadow-2xl overflow-hidden relative group">
         
         <model-viewer 
-            src="{{ .Params.src | strings.TrimPrefix "/" | relURL }}" 
-            poster="{{ .Params.poster | strings.TrimPrefix "/" | relURL }}" 
-            alt="{{ .Params.title }}"
+            src="{{ (.Get "src") | strings.TrimPrefix "/" | relURL }}" 
+            poster="{{ (.Get "poster") | strings.TrimPrefix "/" | relURL }}" 
+            alt="{{ .Get "title" }}"
             loading="lazy"
             camera-controls
             auto-rotate
@@ -46,4 +46,3 @@
     {{ end }}
 
 </div>
-

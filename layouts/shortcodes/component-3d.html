@@ -1,0 +1,114 @@
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-32 relative component-reveal">
+    
+    <!-- Text Column -->
+    <div class="lg:col-span-5 {{ if eq (.Get "reverse") "true" }}lg:order-2{{ end }} flex flex-col justify-center">
+        
+        {{ if .Get "category" }}
+        <div class="inline-block mb-4">
+            <span class="text-xs font-bold uppercase tracking-widest text-[#FF425C] bg-[#FF425C]/10 px-4 py-2 rounded-full border border-[#FF425C]/20">
+                {{ .Get "category" }}
+            </span>
+        </div>
+        {{ end }}
+        
+        <h3 class="text-3xl md:text-5xl font-black text-white mb-6 leading-tight tracking-tight">
+            {{ .Get "title" }}
+        </h3>
+        
+        <div class="w-16 h-1 bg-gradient-to-r from-[#FF425C] to-transparent rounded-full mb-8"></div>
+        
+        <div class="text-gray-300 leading-relaxed text-lg font-light space-y-4 [&_strong]:text-white [&_strong]:font-semibold">
+            {{ .Inner | markdownify }}
+        </div>
+
+        <!-- Tech Details -->
+        {{ if .Get "weight" }}
+        <div class="mt-8 grid grid-cols-2 gap-4">
+            {{ if .Get "weight" }}
+            <div class="bg-[#2A2A2A] border border-white/10 rounded-xl p-4">
+                <div class="text-gray-500 text-xs uppercase tracking-wider mb-1">Weight</div>
+                <div class="text-white text-xl font-bold">{{ .Get "weight" }}</div>
+            </div>
+            {{ end }}
+            {{ if .Get "material" }}
+            <div class="bg-[#2A2A2A] border border-white/10 rounded-xl p-4">
+                <div class="text-gray-500 text-xs uppercase tracking-wider mb-1">Material</div>
+                <div class="text-white text-xl font-bold">{{ .Get "material" }}</div>
+            </div>
+            {{ end }}
+        </div>
+        {{ end }}
+    </div>
+
+    <!-- 3D Model Column -->
+    <div class="lg:col-span-7 {{ if eq (.Get "reverse") "true" }}lg:order-1{{ end }}">
+        <div class="w-full h-[400px] md:h-[550px] bg-gradient-to-br from-[#2A2A2A] to-[#1a1a1a] rounded-3xl border border-white/10 shadow-2xl overflow-hidden relative group hover:border-[#FF425C]/30 transition-all duration-500">
+            
+            <model-viewer 
+                src="{{ (.Get "src") | strings.TrimPrefix "/" | relURL }}" 
+                alt="{{ .Get "title" }}"
+                loading="lazy"
+                camera-controls
+                auto-rotate
+                auto-rotate-delay="1000"
+                rotation-per-second="30deg"
+                touch-action="pan-y"
+                
+                environment-image="neutral"
+                exposure="1.2"
+                shadow-intensity="1.2"
+                shadow-softness="0.8"
+
+                style="width: 100%; height: 100%; background: linear-gradient(135deg, #2A2A2A 0%, #1a1a1a 100%);"
+            >
+                <div slot="progress-bar" style="background: linear-gradient(90deg, #FF425C 0%, #ff6b7a 100%); height: 4px; width: 100%; border-radius: 2px;"></div>
+            </model-viewer>
+
+            <!-- 3D Badge -->
+            <div class="absolute bottom-6 right-6 bg-black/60 backdrop-blur-md px-4 py-2 rounded-full text-xs text-white uppercase tracking-widest border border-white/20 pointer-events-none flex items-center gap-2">
+                <svg class="w-4 h-4 animate-spin-slow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                </svg>
+                Interactive 3D
+            </div>
+
+            <!-- Hover Instruction -->
+            <div class="absolute top-6 left-6 bg-[#FF425C]/90 backdrop-blur-md px-4 py-2 rounded-full text-xs text-white font-bold uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                Drag to Rotate
+            </div>
+        </div>
+
+        <!-- Optional Image Fallback -->
+        {{ if .Get "image" }}
+        <div class="mt-4 rounded-2xl overflow-hidden border border-white/5">
+            <img src="{{ (.Get "image") | strings.TrimPrefix "/" | relURL }}" 
+                 alt="{{ .Get "title" }}" 
+                 class="w-full h-auto opacity-80 hover:opacity-100 transition-opacity duration-300">
+        </div>
+        {{ end }}
+    </div>
+
+</div>
+
+<style>
+@keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+    animation: spin-slow 8s linear infinite;
+}
+
+.component-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
