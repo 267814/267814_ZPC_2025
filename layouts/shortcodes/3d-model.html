@@ -9,8 +9,8 @@
     <div class="w-full h-[500px] md:h-[600px] bg-[#2A2A2A] rounded-3xl border border-white/10 shadow-2xl overflow-hidden relative group">
         
         <model-viewer 
-            src="{{ (.Get "src") | strings.TrimPrefix "/" | relURL }}" 
-            poster="{{ (.Get "poster") | strings.TrimPrefix "/" | relURL }}" 
+            src="{{ (.Get "src") | strings.TrimPrefix "/" | absURL }}" 
+            poster="{{ (.Get "poster") | strings.TrimPrefix "/" | absURL }}"
             alt="{{ .Get "title" }}"
             loading="lazy"
             camera-controls
