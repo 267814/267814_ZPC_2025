@@ -78,12 +78,60 @@
             </div>
         </div>
 
-        <!-- Optional Image Fallback -->
-        {{ if .Get "image" }}
-        <div class="mt-4 rounded-2xl overflow-hidden border border-white/5">
-            <img src="{{ (.Get "image") | strings.TrimPrefix "/" | absURL }}"
-                 alt="{{ .Get "title" }}" 
-                 class="w-full h-auto opacity-80 hover:opacity-100 transition-opacity duration-300">
+        <!-- Photo Gallery (if photos provided) -->
+        {{ if .Get "photos" }}
+        <div class="photo-gallery-grid grid grid-cols-3 gap-4 mt-6" 
+             x-data="{ photoModal: false, activePhoto: 0 }">
+            {{ $photos := split (.Get "photos") "," }}
+            {{ range $index, $photo := $photos }}
+            <div class="gallery-thumbnail aspect-square rounded-xl overflow-hidden bg-[#2A2A2A] border border-white/10 cursor-pointer group hover:border-[#FF425C]/50 transition-all duration-300 relative"
+                 @click="photoModal = true; activePhoto = {{ $index }}">
+                <img src="{{ trim $photo " " | absURL }}" 
+                     alt="Detail {{ add $index 1 }}"
+                     style="object-position: center 60%;"
+                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                     
+                <!-- Zoom Icon on Hover -->
+                <div class="absolute inset-0 bg-black/50 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"></path>
+                    </svg>
+                </div>
+            </div>
+            {{ end }}
+
+            <!-- Fullscreen Photo Modal -->
+            <div x-show="photoModal" 
+                 class="component-photo-modal"
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0"
+                 x-transition:enter-end="opacity-100"
+                 @click.self="photoModal = false"
+                 style="display: none;">
+                
+                <button @click="photoModal = false" class="component-modal-close">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+                
+                <div class="component-modal-content">
+                    {{ $photos := split (.Get "photos") "," }}
+                    
+                    <template x-for="(photo, index) in {{ len $photos }}" :key="index">
+                        <div x-show="activePhoto === index" class="component-modal-slide">
+                            <img :src="[{{ range $index, $photo := $photos }}{{ if $index }},{{ end }}'{{ trim $photo " " | absURL }}'{{ end }}][index]" 
+                                 alt=""
+                                 class="component-modal-img">
+                        </div>
+                    </template>
+                    
+                    {{ if gt (len $photos) 1 }}
+                    <button @click="activePhoto = (activePhoto - 1 + {{ len $photos }}) % {{ len $photos }}" class="component-modal-nav prev">‹</button>
+                    <button @click="activePhoto = (activePhoto + 1) % {{ len $photos }}" class="component-modal-nav next">›</button>
+                    {{ end }}
+                </div>
+            </div>
         </div>
         {{ end }}
     </div>
@@ -109,6 +157,116 @@
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* Gallery Thumbnails */
+.gallery-thumbnail {
+    position: relative;
+}
+
+/* Component Photo Modal */
+.component-photo-modal {
+    position: fixed;
+    inset: 0;
+    background: transparent;
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.component-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.component-modal-close:hover {
+    background: rgba(255, 66, 92, 0.9);
+    border-color: rgba(255, 66, 92, 1);
+    transform: scale(1.1) rotate(90deg);
+    box-shadow: 0 0 20px rgba(255, 66, 92, 0.5);
+}
+
+.component-modal-content {
+    position: relative;
+    max-width: 95vw;
+    max-height: 95vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.component-modal-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.component-modal-img {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 24px;
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.7);
+}
+
+.component-modal-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.component-modal-nav:hover {
+    background: rgba(255, 66, 92, 0.9);
+    border-color: rgba(255, 66, 92, 1);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 66, 92, 0.5);
+}
+
+.component-modal-nav.prev {
+    left: 20px;
+}
+
+.component-modal-nav.next {
+    right: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .photo-gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
     }
 }
 </style>

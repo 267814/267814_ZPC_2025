@@ -1,0 +1,72 @@
+<!-- Dev Journal Wrapper - Header and Container -->
+<div class="dev-journal-wrapper" id="dev-journal">
+    
+    <!-- Journal Header -->
+    <div class="journal-header">
+        <div class="journal-badge">{{ .Get "badge" | default "Behind the Scenes" }}</div>
+        <h2 class="journal-title">{{ .Get "title" | default "Development Journal" }}</h2>
+        <p class="journal-subtitle">{{ .Get "subtitle" | default "A year of trial, error, and triumph" }}</p>
+    </div>
+
+    <!-- Timeline Container -->
+    <div class="timeline-container">
+        {{ .Inner }}
+    </div>
+    
+</div>
+
+<style>
+.dev-journal-wrapper {
+    margin: 100px 0;
+    position: relative;
+}
+
+.journal-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.journal-badge {
+    display: inline-block;
+    background: rgba(255, 66, 92, 0.1);
+    color: #FF425C;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 66, 92, 0.3);
+}
+
+.journal-title {
+    font-size: 4rem;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 15px;
+    line-height: 1.1;
+}
+
+.journal-subtitle {
+    font-size: 1.5rem;
+    color: #999;
+    font-weight: 300;
+}
+
+.timeline-container {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .journal-title {
+        font-size: 2.5rem;
+    }
+    
+    .journal-subtitle {
+        font-size: 1.2rem;
+    }
+}
+</style>
